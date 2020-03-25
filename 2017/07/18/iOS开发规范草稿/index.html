@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | Hexo</title>
+  <title>iOS设计开发规范草稿 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="sketch规范设计规范 一致性:边距稳定8，12，20等；字体大小稳定；相似列表的相似图片，例如封面、头像尺寸一致； 可测量性:衡量可测量性的标准是，选中某个元素后，右侧面板就能给出具体位置、大小、字体、颜色等信息，而无需再测量，计算。例如一个列表，从外观上而言，可以用一个很大的白色背景图，在上面放几条横线就达到视觉效果了。但是这样不能直接得出一行的高度。因此应该有一个和设计行高一致的背景，在上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS设计开发规范草稿">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="sketch规范设计规范 一致性:边距稳定8，12，20等；字体大小稳定；相似列表的相似图片，例如封面、头像尺寸一致； 可测量性:衡量可测量性的标准是，选中某个元素后，右侧面板就能给出具体位置、大小、字体、颜色等信息，而无需再测量，计算。例如一个列表，从外观上而言，可以用一个很大的白色背景图，在上面放几条横线就达到视觉效果了。但是这样不能直接得出一行的高度。因此应该有一个和设计行高一致的背景，在上">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-07-18T02:36:00.000Z">
+<meta property="article:modified_time" content="2020-03-24T23:47:35.557Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="开发规范">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -140,60 +146,497 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iOS开发规范草稿" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/18/TestMD/" class="archive-article-date">
-  	<time datetime="2016-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/18/TestMD/">旧事 招人太难了 7.10-7.16</a>
+    <h1 class="article-title" itemprop="name">
+      iOS设计开发规范草稿
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" class="archive-article-date">
+  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="sketch规范"><a href="#sketch规范" class="headerlink" title="sketch规范"></a>sketch规范</h1><h3 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h3><ul>
+<li>一致性:边距稳定8，12，20等；字体大小稳定；相似列表的相似图片，例如封面、头像尺寸一致；</li>
+<li>可测量性:衡量可测量性的标准是，选中某个元素后，右侧面板就能给出具体位置、大小、字体、颜色等信息，而无需再测量，计算。例如一个列表，从外观上而言，可以用一个很大的白色背景图，在上面放几条横线就达到视觉效果了。但是这样不能直接得出一行的高度。因此应该有一个和设计行高一致的背景，在上面布局其他元素。</li>
+<li>可导出性:资源文件应该直接导出就能用，无需裁剪；对于复杂效果，不易导出的，应该在附近给出高倍图。</li>
+<li>简约:配色稳定、单一、种类少；较少例如渐变，需要复杂层叠才能产生的效果</li>
+<li>聚合:层叠的元素应该成组</li>
+<li>完备性:有些图标可能有多种状态，应在附近给出其他状态的图，例如选中和非选中，有红点和没红点等，无星半星全星等。设计稿上可能只展示了一半的内容，但是真实交互会出现完整图片的，应在附近给出全图。</li>
+<li>模块复用</li>
+</ul>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ul>
+<li>sketch设计稿文件名按x.x.x.x  前三位是App版本号，没有说明的情况下为1.0.0，后一位是该版本下的迭代号，无上限</li>
+<li>对icon名字暂不作要求</li>
+<li>建议在设计稿某个显眼位置，记录各版本更新描述</li>
+<li>建议保留各最终发布版本对应的设计稿<a id="more"></a>
+
+</li>
+</ul>
+<h3 id="组织规范"><a href="#组织规范" class="headerlink" title="组织规范"></a>组织规范</h3><p>#iOS开发规范及架构简介草稿</p>
+<p>##规范部分</p>
+<ul>
+<li>目的：写出高度结构化、平坦、简洁、一致的代码。对于绝大部分业务，不同的人写的代码，应该只有命名的差别，实现应该接近。</li>
+<li>途径：代码片段，范例代码，实现约束以及一系列规范。</li>
+</ul>
+<p>##头文件引入<br>头文件引入顺序：</p>
+<ul>
+<li>VC </li>
+<li>宏</li>
+<li>类别</li>
+<li>请求</li>
+<li>模型</li>
+<li>Cell</li>
+<li>其他View</li>
+</ul>
+<p>注意：不同类别间可添加隔行</p>
+<p>##模型的使用</p>
+<ul>
+<li>命名规则:与接口对接的顶级模型必须以ResultModel结尾，普通模型以Model结尾。要求工程结构中模型文件必须排在顶级模型之下。模型一般应该带前缀，顶级模块下的模型，可以工程名缩写为前缀。例如CarKeeper的Home模块的顶级模型就叫CKHomeResultModel(【讨论】<strong>但是这并非必须，例如大多数项目都会包含Mine模块，有且仅有一个，而且功能接近，这时候就完全不需要工程前缀；对于某个APP里的Shop模块，可能不同的App里有不同的呈现，这时候最好加上工程前缀，以防止冲突</strong>)。非顶级模型，例如Distributor模块，虽然工程中它和Home模块同层，但从业务层考虑，它位于Home模块之下，因此该模块下的模型是有一个Distributor域的，因此Distributor下的子模块均用DS前缀。为了确保模块的可移植性，DS前不添加CK前缀（【讨论】<strong>这里也潜在前面探讨的问题，目前Distributor只有一种类型，因此我们没有加工程前缀，但未来可能出现另一种Distributor，那时候新的Distributor就需要加上前缀来区别现在的Distributor</strong>）。</li>
+<li>了解ignore，optional的使用，特别是处理基本变量时需要实现类方法，模型套模型的使用方法</li>
+<li>需要ignore的字段，建议使用xx前缀，例如目前常用的xxType</li>
+</ul>
+<p>##请求的使用</p>
+<ul>
+<li>请求命名:请求一般与模块一一对应，因此不需要前缀。对于大的模块，可能需要划分小模块，每个模块都有分布请求时候，分布请求应带模块前缀。</li>
+<li>每个请求都继承了BaseRequest的图片上传功能</li>
+<li>内路由原理:不同接口、不同host，相同页面的复用实现</li>
+<li>接口地址的宏命名：<code>模块缩写_[子模块或虚拟子模块缩写]_[动作|业务]_URL</code>注：子模块为划分为文件夹的小模块，虚拟模块则是未划分为子文件夹，但是在业务概念上是一个子模块。示例：DS_APPLY_DISTRIBUTOR_URL，DS_HOME_DATA_URL，DS_DP_INVITE_URL</li>
+<li>请求方法的命名:get方法以get开头，post方法以动作名开头，例如：getCustomerCaptchaWithParams，inviteCustomerWithParams。</li>
+</ul>
+<p>##ViewController的使用<br>###选择合适的ViewController</p>
+<ul>
+<li>一般情况下使用BaseTableViewController即可。</li>
+<li>对于少量简单的输入，可以简单使用BaseViewController。如果输入控件在小屏幕上可能被键盘遮挡，此时可以简单在底下放个ScrollView。</li>
+<li>对于布局较复杂的页面，使用BaseViewController不易于维护的时候，建议使用BaseViewController。</li>
+<li>对于稍微复杂的编辑页面，可能需要viewModel保存编辑数据</li>
+<li>对于滑动切换页面的，需要继承TTViewPagerController，类名后缀PagerController</li>
+<li>瀑布流布局，需要继承BaseWallViewController</li>
+<li>需要导航条的页面，应主动在ViewDidLoad里调用addNavigationBar方法。</li>
+</ul>
+<p>##TableViewCell的使用</p>
+<ul>
+<li>cell方法的排列顺序</li>
+<li>delegate的命名</li>
+<li>label宽度的限制</li>
+<li>输入控件的键盘类型设定</li>
+<li>布局代码的编写</li>
+<li>显示隐藏的控制</li>
+</ul>
+<p>##常用名字</p>
+<ul>
+<li><p>为了直观规整，代码风格一致，一般子视图建议全称，不要缩写成TF，btn。</p>
+</li>
+<li><p>-initData    带复位功能的请求刷新</p>
+</li>
+<li><p>-loadData    请求刷新，但不复位</p>
+</li>
+<li><p>-reloadData  VC刷新</p>
+</li>
+<li><p>-reloadData: view刷新数据</p>
+</li>
+<li><p>-render      VC或View的刷新或加载子视图</p>
+</li>
+<li><p>-clickback   点击返回按钮执行的方法</p>
+</li>
+<li><p>-hideEmptyTips</p>
+</li>
+<li><p>-showEmptyTips</p>
+</li>
+<li></li>
+<li><p>icon\logo\image\cover 通用图片</p>
+</li>
+<li><p>avatar 特指头像</p>
+</li>
+<li><p>gender 性别</p>
+</li>
+<li><p>age  年龄</p>
+</li>
+<li><p>date 日期</p>
+</li>
+<li><p>time 时间</p>
+</li>
+<li><p>day  日</p>
+</li>
+<li><p>sum  金额</p>
+</li>
+<li><p>price  价格</p>
+</li>
+<li><p>amount  总计，总量，总和</p>
+</li>
+<li><p>line   横线</p>
+</li>
+<li><p>pipe    竖线</p>
+</li>
+<li><p>title  标题</p>
+</li>
+<li><p>desc   详情</p>
+</li>
+<li><p>tips   提示语</p>
+</li>
+<li><p>bottomView  底部视图</p>
+</li>
+<li><p>checkButton 特指TTCheckButton</p>
+</li>
+<li><p>confirmButton</p>
+</li>
+<li><p>submitButton</p>
+</li>
+<li><p>nextButon</p>
+</li>
+<li><p>titleLabel titleValueLabel “标题”以及标题内容的label</p>
+</li>
+<li><p>spot   点，区别于dot</p>
+</li>
+<li><p>moduleView  模块图</p>
+</li>
+<li><p>status 状态</p>
+</li>
+<li><p>moreImageView  查看详情</p>
+</li>
+<li><p>currency  货币符号</p>
+</li>
+<li><p>detail 详情</p>
+</li>
+<li><p>balance  余额</p>
+</li>
+<li><p>point   积分</p>
+</li>
+<li><p>mall   商城</p>
+</li>
+<li><p>shop    店铺</p>
+</li>
+<li><p>brand   品牌</p>
+</li>
+<li><p>style    风格</p>
+</li>
+<li><p>type    类型</p>
+</li>
+<li><p>home、index  首页</p>
+</li>
+<li><p>nickname   昵称</p>
+</li>
+<li><p>name    用户名</p>
+</li>
+<li><p>timeline   时间轴</p>
+</li>
+<li><p>history   历史、记录</p>
+</li>
+<li><p>record      记录 </p>
+</li>
+<li><p>account  账户</p>
+</li>
+<li><p>count   计数、个数</p>
+</li>
+<li><p>customer  客户</p>
+</li>
+<li><p>message   消息</p>
+</li>
+<li><p>notification、notify   通知</p>
+</li>
+<li><p>guide    引导</p>
+</li>
+<li><p>list  列表</p>
+</li>
+<li><p>section  分区</p>
+</li>
+<li><p>badge   红点计数</p>
+</li>
+<li><p>Dashboard 面板</p>
+</li>
+<li></li>
+</ul>
+<p>##图片命名规范</p>
+<ul>
+<li>mine模块的每个item的icon图片均以mine_menu开头，除icon外，则以mine开头即可</li>
+<li>tabbar的图片专门有个文件夹【未来可能会废弃该方案，不利于模块移植，暂时未定】，命名规则icon_tabbar_xx_unselected,icon_tabbar_xxx_selected;如果有带小红点的情况，则为icon_tabbar_xxx_selected_unread，icon_tabbar_xxx_unselected_unread</li>
+<li></li>
+</ul>
+<h2 id="宏文件规范"><a href="#宏文件规范" class="headerlink" title="宏文件规范"></a>宏文件规范</h2><ul>
+<li>因宏文件会破坏组件化，因此不建议使用宏。对于有独立出来可能的模块，应只使用基础库里提供的宏。对于独立性不明显的模块，仍然可以使用宏：</li>
+<li>配色宏文件（组件化中的替代方案，使用RGBA宏或者RGB宏）</li>
+<li>通知名宏文件（组件化中的替代方案，在发出通知的类.h里写一个extern 的键名变量，.m中指定键名字符串，在需要处理通知的类里引入。我们认为，有通知关系的两个模块是有依赖的，将来处理通知的模块被某个项目引用的时候，发送通知的模块也需要一并引入）</li>
+<li>部分颜色配置已经归于内建的主题管理类了</li>
+</ul>
+<p>##Schema规范</p>
+<ul>
+<li>不要再写死xiaoma://xxx了，应当使用非标准宏LOCALSCHEMA(@”xxx”).将来会有一个标准实现，兼容现有代码。</li>
+<li>schema被实现为三种schema，local schema,inner schema 和external schema。分别对应本地，服务端和外部schema。历史遗留的APP_SCHEME即对应inner schema。再可见的将来local schema和inner schema将是一致的，以确保所有本地schema，同时也是内部schema，而外部schema则存在不确定性。</li>
+<li>schema命名</li>
+</ul>
+<p>##模块划分</p>
+<ul>
+<li>保留模块（文件夹）：Mine,Settings,VersionCheck,Login(包含Register，resetPassword)。关于保留模块的一点设想，Mine页面可能会根据业务而有所区别，譬如商城就会有订单，不是商城就不会有。因此要和个人信息编辑的settings模块分离出来。Login的模式也较为固定，注册、登陆、找回密码这些业务已经较为稳定。VersionCheck目前iOS实现为无侵入式，首页一行代码引入。</li>
+<li>Module:module为几个固定的模块的集合，例如Mall Module，该module一般会有一个自己的AppEntrance管理schema</li>
+<li>模块一般按业务划分。当前按照tab划分为若干个顶级模块，也可以将某个顶级模块下的较大模块单独拉出来作为顶级模块，取决于业务关联程度。以洗车App为例，顶级模块为保留模块，再加Home和Point Mall。由于Distributor模块较为庞大，且只是作为首页只是作为一个入口，业务没有依赖，因此单独拉出来。维修门店也是一个中型的模块，包含了门店列表和详情，也可以单独拉出来。新车列表也可以单独拉出来，为Home瘦身。这时候Home就剩下home本身和MyCar两个ViewController了，考虑到这两者有一定关联，就放在一起，既保证了业务的联系，又不至于让Home模块过于庞大。另外账户充值也单独拉出来了。另外还建了个Mall的模块，用来放置原来属于mall的部分模块，例如评分、收货人地址、订单列表和收银台。再来探讨刚拉出来的Distributor模块，作为顶级模块，根据业务复杂程度还可以再划分一层子模块，再深层次则不建议。Distributor首先有个自己的Home模块，还有申请模块，提现模块，营收模块，分销推广和客户推广模块。提现模块，因为涉及提现、账户选择、账户编辑、提现历史、提现详情等一系列页面而独立成块；营收则包含了营收概览、不可用金额列表、收支情况、结算情况等页面而独立成块；分销推广则包含了推广和管理两个页面，在业务上有一定关联性，推广了才有分销管理的列表；客户推广也是如此；统计单独为一个模块。</li>
+<li>关于命名:顶级模块下的类，可以直接使用顶级模块的名字作为开头，例如NewCar新车模块，那么新车列表还是可以叫NewCarListViewController。在模块名不是很长的时候推荐该写法，一般全称比缩写，例如NC更不容易引起命名冲突。但也不禁止使用模块缩写，但是ViewController应使用全称。对于顶级模块下的次级模块，ViewController可以使用顶级模块缩写加具体业务的全称，例如DSDistributorApplyViewController,由于次级模块名已表明是DistributorApply因此DSApplyViewController一般也关系不大，但是如果Distributor下还有别的申请，那么这个名字一旦脱离次级模块的限制，就会产生歧义。一般鼓励ViewController名字尽量详尽，而Cell则可以用顶级模块缩写加对应VC业务的缩写加具体功能名，例如分销商申请下的申请信息填写的Cell，则可以简单命名，DSDAInfomationCell。这样就可以一眼看出该cell属于哪个VC。对于一个模块下有多个平行VC的情况，可以起到很好的隔离作用。</li>
+<li>适时重构。当发现当前模块超出预期，变得越来越庞大的时候，应立即拆分子模块。因此要确保你的代码组织便于拆分，例如适当的空行隔离导入的文件，适当的标记划分相同业务的请求，请求地址，请求实现，便于请求的拆分；恰当的命名，兼顾关联性与独立性。</li>
+</ul>
+<p>##AppEntrance规范</p>
+<ul>
+<li>头文件：同模块头文件形成group，用空行隔开</li>
+<li>load方法中注册schema时，用#pragma mark划分模块，业务模块在上，保留模块在底部，保留模块为所有app所公用</li>
+<li>handleOpenUrl中 也需要使用#pragma mark划分模块，保留模块的schema处理在顶部，业务schema在下</li>
+</ul>
+<p>##架构部分<br>##info.plist</p>
+<ul>
+<li>权限申请：相册、照相机、地理位置</li>
+<li>schema查询</li>
+<li>statusbar样式</li>
+<li>https</li>
+<li>其他：支持版本、多国语言、bitcode、应用朝向、启动图、icon、pch</li>
+</ul>
+<p>##Appdelegate</p>
+<ul>
+<li>目前没有扩充的内容</li>
+</ul>
+<p>##AppEntrance</p>
+<ul>
+<li>主题配置</li>
+<li>host配置</li>
+<li>骨架页面初始化</li>
+<li>appInit(加载启动图或者引导图)</li>
+<li>三方配置</li>
+<li>消息注册</li>
+<li>推送处理</li>
+</ul>
+<p>##启动模式</p>
+<ul>
+<li>系统加载完启动图后，发送kNOTIFY_APP_LAUNCH_LOADING，通知TTAppLaunchView继续加载启动图或者引导图或者广告图，为节省内存，这些图片应通过路径加载。当首页数据就绪时候，应该发送kNOTIFY_APP_LAUNCH_REMOVE通知移除TTAppLaunchView。这里有一点非常重要，首页如果要求登陆的话，就会跳转到登录页面，因此登录页面也要发送kNOTIFY_APP_LAUNCH_REMOVE通知，确保移除TTAppLaunchView。</li>
+<li>TTAppLaunchView的三种类型：</li>
+</ul>
+<p>##登陆模式<br>###首页不会触发登陆</p>
+<ul>
+<li>appModuleEntrance中对login schema的处理不变，TTTabbarControllerDelegate中做判断，如果未登录且选择的Tab会触发登陆，则不让用户选中该tab。</li>
+<li>login schema目前的处理逻辑已矫正如下：一旦触发登陆，就清空本地用户信息。再判断topVC是否是LoginViewController,如果是就返回；如果不是，则pop到根视图控制器，再push LoginViewController。</li>
+</ul>
+<p>###所有页面会触发登陆</p>
+<ul>
+<li>appModuleEntrance中对login schema的处理不变，关闭LoginViewController的返回功能</li>
+<li>login schema目前的处理逻辑同上</li>
+</ul>
+<p>##退出模式<br>###首页不会触发登陆</p>
+<ul>
+<li>appModuleEntrance中需要对index schema做处理，确保退出后交互页面落到首页</li>
+</ul>
+<p>###所有页面会触发登陆</p>
+<ul>
+<li>appModuleEntrance中处理index schema时，可以简单pop到根VC，再由根VC触发登陆动作；或者落到固定的某个Tab，再由其触发登陆。如果要确保进入登录页面（无网络退出时，不会触发登陆动作），可按login schema处理index schema时。</li>
+</ul>
+<p>##键盘管理利器:IQKeyboardManage</p>
+<ul>
+<li>工程的多国语言设置中需要添加简体中文，确保IQKeyboardManage可以被本地化</li>
+</ul>
+<p>##支付</p>
+<ul>
+<li>Alipay:Alipay由于官方不提供CocoaPods支持，现已私有为XMAlipaySDK。需要使用包裹的helper类AlipayManager使用。Alipay接口部分有变化，使用私有的Alipay的话，需要按照洗车APP的用法使用，真宝汇和之前版本直接拖的旧版Alipay SDK。为了确保回调执行，应在支付前设置AlipayManager的CompletionBlock，并在支付时调用无callback的接口或者将带callback接口中的callback设为nil.</li>
+<li>微信支付</li>
+</ul>
+<p>##分享</p>
+<p>##block kit</p>
+<ul>
+<li>建议慎用block kit相关东西，一、容易循环引用，二、经验教训bk_whenTapped多次执行后有非常明显的性能问题，三、block kit已发现一个不太常见的崩溃问题。因此按钮点击事件一般仍应使用addTarget。</li>
+</ul>
+<p>##Cocoapods</p>
+<ul>
+<li>建议锁定cocoapods安装版，防止pod.lock报错</li>
+</ul>
+<p>##核心库：XMMegaBase<br>###组成</p>
+<ul>
+<li>XMMegaBase抽取自小码以往的iOS项目，是一个开发小码应用的较小基础库。也就意味着，它包含了开发整个应用或者组件所必须的全部库类。</li>
+</ul>
+<p>###常见类的说明</p>
+<p>##常见场景的实现<br>###单选</p>
+<p>###多选</p>
+<p>###通知</p>
+<p>###筛选</p>
+<p>###排序</p>
+<p>###分组</p>
+<p>###图墙</p>
+<p>###调整顺序</p>
+<p>###多个Target</p>
+<p>##附录范例代码</p>
+<h2 id="ViewController"><a href="#ViewController" class="headerlink" title="ViewController"></a>ViewController</h2><p>###ViewDidLoad</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    &#x2F;&#x2F; Do any additional setup after loading the view.</span><br><span class="line">    self.view.backgroundColor &#x3D; Color_Gray245;</span><br><span class="line">    [self addNavigationBar];</span><br><span class="line">    </span><br><span class="line">    UIButton *rightButton &#x3D; [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    rightButton.frame &#x3D; CGRectMake(0, 0, 50, 32);</span><br><span class="line">    rightButton.titleLabel.font &#x3D; FONT(18);</span><br><span class="line">    [rightButton setTitle:@&quot;添加&quot; forState:UIControlStateNormal];</span><br><span class="line">    [rightButton addTarget:self action:@selector(handleRightButton) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    self.navigationBar.rightBarButton &#x3D; rightButton;</span><br><span class="line">    </span><br><span class="line">    self.tableView.showsInfiniteScrolling &#x3D; NO;</span><br><span class="line">    self.tableView.showsPullToRefresh &#x3D; YES;</span><br><span class="line">    </span><br><span class="line">    self.title &#x3D; @&quot;账本列表&quot;;</span><br><span class="line">    [self initData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##initData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)initData</span><br><span class="line">&#123;</span><br><span class="line">    self.loadingType &#x3D; kInit;</span><br><span class="line">    self.list &#x3D; [NSMutableArray array];</span><br><span class="line">    [self loadData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##loadData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">    NSMutableDictionary *params &#x3D; [NSMutableDictionary dictionary];</span><br><span class="line">    [params setSafeObject:self.status forKey:@&quot;status&quot;];</span><br><span class="line">    if (self.loadingType &#x3D;&#x3D; kLoadMore) &#123;</span><br><span class="line">        [params setSafeObject:self.wp forKey:@&quot;wp&quot;];</span><br><span class="line">        </span><br><span class="line">        [CAADBudgetRequest getBudgetApplyListWithParams:params success:^(CAADItemListResultModel *resultModel) &#123;</span><br><span class="line">            </span><br><span class="line">            if (resultModel) &#123;</span><br><span class="line">                self.wp &#x3D; resultModel.wp;</span><br><span class="line">                self.tableView.showsInfiniteScrolling &#x3D; !resultModel.isEnd;</span><br><span class="line">                [self.list addObjectsFromSafeArray:resultModel.list];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                self.tableView.showsInfiniteScrolling &#x3D; NO;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            [self finishLoadMore];</span><br><span class="line">            [self reloadData];</span><br><span class="line">        &#125; failure:^(StatusModel *status) &#123;</span><br><span class="line">            [self showNotice:status.msg];</span><br><span class="line">            [self finishLoadMore];</span><br><span class="line">            [self reloadData];</span><br><span class="line">        &#125;];</span><br><span class="line">        </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        [CAADBudgetRequest getBudgetApplyListWithParams:params success:^(CAADItemListResultModel *resultModel) &#123;</span><br><span class="line">            </span><br><span class="line">            [self.list removeAllObjects];</span><br><span class="line">            [self hideEmptyTips];</span><br><span class="line">            </span><br><span class="line">            if (resultModel) &#123;</span><br><span class="line">                [self.list addObjectsFromSafeArray:resultModel.list];</span><br><span class="line">                self.wp &#x3D; resultModel.wp;</span><br><span class="line">                self.tableView.showsInfiniteScrolling &#x3D; !resultModel.isEnd;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                self.tableView.showsInfiniteScrolling &#x3D; NO;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if (resultModel.list.count &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                [self showEmptyTips:@&quot;当前没有相关预算申请哦&quot;];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            [self finishRefresh];</span><br><span class="line">            [self reloadData];</span><br><span class="line">        &#125; failure:^(StatusModel *status) &#123;</span><br><span class="line">            [self showNotice:status.msg];</span><br><span class="line">            [self finishRefresh];</span><br><span class="line">            [self reloadData];</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##TableView DataSource &amp; Delegate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">·#pragma mark - UITableViewDataSource·</span><br><span class="line">- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView</span><br><span class="line">&#123;</span><br><span class="line">    return  1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    if (section &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return self.list.count;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    NSInteger row &#x3D; indexPath.row;</span><br><span class="line">    NSInteger section &#x3D; indexPath.section;</span><br><span class="line">    if (section &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        CAAduitItemCell *cell &#x3D; [CAAduitItemCell dequeueReusableCellForTableView:tableView];</span><br><span class="line">        cell.cellData &#x3D; [self.list safeObjectAtIndex:row];</span><br><span class="line">        [cell reloadData];</span><br><span class="line">        return cell;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    BaseTableViewCell *cell &#x3D; [BaseTableViewCell dequeueReusableCellForTableView:tableView];</span><br><span class="line">    [cell reloadData];</span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">·#pragma mark - UITableViewDelegate·</span><br><span class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    CGFloat height &#x3D; 0;</span><br><span class="line">    NSInteger row &#x3D; indexPath.row;</span><br><span class="line">    NSInteger section &#x3D; indexPath.section;</span><br><span class="line">    if (section &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        height &#x3D; [CAAduitItemCell heightForCell:[self.list safeObjectAtIndex:row]];</span><br><span class="line">    &#125;</span><br><span class="line">    return height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    NSInteger row &#x3D; indexPath.row;</span><br><span class="line">    NSInteger section &#x3D; indexPath.section;</span><br><span class="line">    if (section &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        CAADItemModel *model &#x3D; [self.list safeObjectAtIndex:row];</span><br><span class="line">        [[TTNavigationService sharedService] openUrl:model.link];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>#TableViewCell<br>##drawCell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawCell</span><br><span class="line">&#123;</span><br><span class="line">    self.backgroundColor &#x3D; Color_White;</span><br><span class="line">    [self cellAddSubView:self.titleLabel];</span><br><span class="line">    [self cellAddSubView:self.descLabel];</span><br><span class="line">    [self cellAddSubView:self.timeLabel];</span><br><span class="line">    [self cellAddSubView:self.valueLabel];</span><br><span class="line">    [self cellAddSubView:self.line];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##reloadData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)reloadData</span><br><span class="line">&#123;</span><br><span class="line">    if (self.cellData) &#123;</span><br><span class="line">        CAADItemModel *model &#x3D; (CAADItemModel*)self.cellData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>##heightForCell:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ (CGFloat)heightForCell:(id)cellData</span><br><span class="line">&#123;</span><br><span class="line">    CGFloat height &#x3D; 0;</span><br><span class="line">    if (cellData) &#123;</span><br><span class="line">        height &#x3D; 100;</span><br><span class="line">    &#125;</span><br><span class="line">    return height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##Subviews</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#96;#pragma mark - Subviews&#96;</span><br><span class="line">- (UIView*)line</span><br><span class="line">&#123;</span><br><span class="line">    if (!_line) &#123;</span><br><span class="line">        UIView *view &#x3D; [[UIView alloc]initWithFrame:CGRectMake(21, 0, SCREEN_WIDTH-21, LINE_WIDTH)];</span><br><span class="line">        view.backgroundColor &#x3D; Color_Gray238;</span><br><span class="line">        view.bottom &#x3D; 100;</span><br><span class="line">        _line &#x3D; view;</span><br><span class="line">    &#125;</span><br><span class="line">    return _line;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##Others</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;#pragma mark - Button Actions&#96;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旧事</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/18/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS设计开发规范草稿</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -216,8 +659,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

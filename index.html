@@ -49,6 +49,8 @@
 		  <h1 class="header-author"><a href="/">任梦晗</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">在你心里也有过万马奔腾的奇迹</p>
+		
 
 		<nav class="header-menu">
 			<ul>
@@ -99,6 +101,8 @@
 			  <h1 class="header-author js-header-author">任梦晗</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>在你心里也有过万马奔腾的奇迹<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -138,26 +142,42 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS开发规范草稿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/first-blog/">first blog</a>
+      <a class="article-title" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">iOS设计开发规范草稿</a>
     </h1>
   
 
         
-        <a href="/2020/03/24/first-blog/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+        <a href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" class="archive-article-date">
+  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+        <h1 id="sketch规范"><a href="#sketch规范" class="headerlink" title="sketch规范"></a>sketch规范</h1><h3 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h3><ul>
+<li>一致性:边距稳定8，12，20等；字体大小稳定；相似列表的相似图片，例如封面、头像尺寸一致；</li>
+<li>可测量性:衡量可测量性的标准是，选中某个元素后，右侧面板就能给出具体位置、大小、字体、颜色等信息，而无需再测量，计算。例如一个列表，从外观上而言，可以用一个很大的白色背景图，在上面放几条横线就达到视觉效果了。但是这样不能直接得出一行的高度。因此应该有一个和设计行高一致的背景，在上面布局其他元素。</li>
+<li>可导出性:资源文件应该直接导出就能用，无需裁剪；对于复杂效果，不易导出的，应该在附近给出高倍图。</li>
+<li>简约:配色稳定、单一、种类少；较少例如渐变，需要复杂层叠才能产生的效果</li>
+<li>聚合:层叠的元素应该成组</li>
+<li>完备性:有些图标可能有多种状态，应在附近给出其他状态的图，例如选中和非选中，有红点和没红点等，无星半星全星等。设计稿上可能只展示了一半的内容，但是真实交互会出现完整图片的，应在附近给出全图。</li>
+<li>模块复用</li>
+</ul>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ul>
+<li>sketch设计稿文件名按x.x.x.x  前三位是App版本号，没有说明的情况下为1.0.0，后一位是该版本下的迭代号，无上限</li>
+<li>对icon名字暂不作要求</li>
+<li>建议在设计稿某个显眼位置，记录各版本更新描述</li>
+<li>建议保留各最终发布版本对应的设计稿
+        
+          <a class="article-more-a" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/#more">more >></a>
         
       
 
@@ -166,11 +186,26 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/first-blog/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">展开全文 >></a>
         </p>
       
 
@@ -200,40 +235,36 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-组件化之路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/07/18/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%B7%AF/">iOS设计开发规范草稿</a>
     </h1>
   
 
         
-        <a href="/2020/03/24/hello-world/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:23:09.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+        <a href="/2017/07/18/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%B7%AF/" class="archive-article-date">
+  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <h1 id="浅谈我经历的组件化之路"><a href="#浅谈我经历的组件化之路" class="headerlink" title="浅谈我经历的组件化之路"></a>浅谈我经历的组件化之路</h1><p><img src="/photos/zjh/WX20181024-163023.jpg" alt=""></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>因为公司的项目很多，大多是商城类app，就算不是商城类的app有很多功能性的东西也是重复的，所以很早在写代码时候就是模块的形式了，这样管理起来重用起来更方便，所以公司的项目从某种角度来说已经很大程度上的进行了组件化开发。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>从最开始我们只有基础库进行了pods管理，然后其他的组件如订单、购物车、shop、评价系统、feed流等等都是通过物理文件夹划分然后进行一个拖拽。</li>
+<li>后来我对其他的业务组件也进行了pods私有化</li>
+<li>然后考虑到了编译速度等问题有进行了二进制化并且与源码切换</li>
+<li>后来又进行了自动化的上传、编译等操作
+        
+          <a class="article-more-a" href="/2017/07/18/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%B7%AF/#more">more >></a>
+        
       
 
       
@@ -241,11 +272,26 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/18/%E7%BB%84%E4%BB%B6%E5%8C%96%E4%B9%8B%E8%B7%AF/">展开全文 >></a>
         </p>
       
 
@@ -444,6 +490,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">开发规范</a>
               </li>
             
             <div class="clearfix"></div>
