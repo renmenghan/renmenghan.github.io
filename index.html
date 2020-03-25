@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Edison‘s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Edison‘s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/blogImg/avatar.jpeg">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -141,6 +141,91 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-CrackQp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/CrackQp/">CrackQp 破解趣拍（持续更新。。）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/CrackQp/" class="archive-article-date">
+  	<time datetime="2020-03-05T17:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer"/>
+
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>破解趣拍 很久之前的代码 已经不用了 sdk也都已经过时了 qp也被收购了  单独拿出来这个组件（仅代码不能运行）进行分享学习（仅供学习） 持续更新</p>
+<h4 id="首先肯定是要根据项目的一些调试-猜测-然后可以通过runtime拿到方法属性配合-Hopper-Disassembler进行分析"><a href="#首先肯定是要根据项目的一些调试-猜测-然后可以通过runtime拿到方法属性配合-Hopper-Disassembler进行分析" class="headerlink" title="首先肯定是要根据项目的一些调试  猜测  然后可以通过runtime拿到方法属性配合 Hopper Disassembler进行分析"></a>首先肯定是要根据项目的一些调试  猜测  然后可以通过runtime拿到方法属性配合 Hopper Disassembler进行分析</h4><p>##权限破解<br>在QPAuth通过分析猜到权限判断之后会调用success方法 所以我们直接绕过权限验证方法直接调用success<br><img src="https://images.gitee.com/uploads/images/2020/0323/222858_e53d5f7b_1648075.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2020/0323/222942_c6bc969d_1648075.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<p>视频导出也有权限 在QPMediaRender中也发现了checkAuth 看到他有返回值 直接返回YES<br><img src="https://images.gitee.com/uploads/images/2020/0323/223203_bcfca739_1648075.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2020/0323/223221_7dc96383_1648075.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<p>##分辨率破解<br>我在QPConfig文件里看到了videosize相关方法<br><img src="https://images.gitee.com/uploads/images/2020/0323/221421_cffa3df2_1648075.png" alt="输入图片说明" title="qp1.png"></p>
+<p>然后对videosize进行方法交换<br><img src="https://images.gitee.com/uploads/images/2020/0323/221635_3ffdd824_1648075.png" alt="输入图片说明" title="qp2.png"></p>
+<p>后来导入video视频发现也有size相关方法 所以也进行了相关方法的hook<br><img src="https://images.gitee.com/uploads/images/2020/0323/222050_21c500d5_1648075.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2020/0323/222148_ba4e0ff0_1648075.png" alt="输入图片说明" title="屏幕截图.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/CrackQp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-组件化之路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -461,7 +546,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">任梦晗，&lt;br&gt;公司欠薪面临倒闭，积极求职中&lt;br&gt;&lt;br&gt;热爱学习进步，&lt;br/&gt;目前是一枚iOSer小学生&lt;br/&gt;&lt;br/&gt;一直梦想有机会进入大厂。&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;&lt;br&gt;每天都在思考，&lt;br/&gt;逝去的时间给我带来了什么，&lt;br&gt;&lt;br/&gt;好像带来了什么,&lt;br&gt;&lt;br/&gt;又好像什么都没带来。&lt;br&gt;。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">任梦晗，&lt;br&gt;公司欠薪面临倒闭，积极求职中&lt;br&gt;&lt;br&gt;热爱学习进步，&lt;br/&gt;目前是一枚iOSer小学生&lt;br/&gt;&lt;br/&gt;一直梦想有机会进入大厂。&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;&lt;br&gt;每天都在思考，&lt;br/&gt;逝去的时间给我带来了什么，&lt;br&gt;&lt;br/&gt;好像带来了什么,&lt;br&gt;&lt;br/&gt;又好像什么都没带来。&lt;br&gt;</div>
   	  	
     	</section>
     
