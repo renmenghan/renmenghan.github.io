@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Edison‘s Blog</title>
+  <title>Runtime(四) | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="runtimeruntime APIAPI - 类相关 Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes)动态创建一个类（参数：父类，类名，额外的内存空间） 注册一个类（要在类注册之前添加成员变量）void objc_registerClassPair(Class cls)  销毁一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime(四)">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/runtime4/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="runtimeruntime APIAPI - 类相关 Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes)动态创建一个类（参数：父类，类名，额外的内存空间） 注册一个类（要在类注册之前添加成员变量）void objc_registerClassPair(Class cls)  销毁一">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-07-26T14:21:00.000Z">
+<meta property="article:modified_time" content="2020-03-26T07:31:34.941Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="runtime">
+<meta property="article:tag" content="底层">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
@@ -146,187 +153,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-CrackQp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-runtime4" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/CrackQp/">CrackQp 破解趣拍（持续更新。。）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/CrackQp/" class="archive-article-date">
-  	<time datetime="2020-03-05T17:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <meta name="referrer" content="no-referrer"/>
-
-<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>破解趣拍 很久之前的代码 已经不用了 sdk也都已经过时了 qp也被收购了  单独拿出来这个组件（仅代码不能运行）进行分享学习（仅供学习） 持续更新</p>
-<h2 id="GitHub："><a href="#GitHub：" class="headerlink" title="GitHub："></a>GitHub：</h2><p><a href="https://github.com/renmenghan/CrackQP" target="_blank" rel="noopener">CrackQP</a>.</p>
-<h4 id="首先肯定是要根据项目的一些调试-猜测-然后可以通过runtime拿到方法属性配合-Hopper-Disassembler进行分析"><a href="#首先肯定是要根据项目的一些调试-猜测-然后可以通过runtime拿到方法属性配合-Hopper-Disassembler进行分析" class="headerlink" title="首先肯定是要根据项目的一些调试  猜测  然后可以通过runtime拿到方法属性配合 Hopper Disassembler进行分析"></a>首先肯定是要根据项目的一些调试  猜测  然后可以通过runtime拿到方法属性配合 Hopper Disassembler进行分析</h4><h2 id="权限破解"><a href="#权限破解" class="headerlink" title="权限破解"></a>权限破解</h2><blockquote>
-<p>在QPAuth通过分析猜到权限判断之后会调用success方法 所以我们直接绕过权限验证方法直接调用success<br><img src="https://images.gitee.com/uploads/images/2020/0323/222858_e53d5f7b_1648075.png" alt="输入图片说明" title="屏幕截图.png"></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/03/06/CrackQp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/CrackQp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-flowchart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/flowchart/">hexo-flowchart</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/flowchart/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hexo中插入flowchart"><a href="#Hexo中插入flowchart" class="headerlink" title="Hexo中插入flowchart"></a>Hexo中插入flowchart</h1><h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>npm 安装<br><code>npm install --save hexo-filter-flowchart</code></p>
-<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">flowchart:</span><br><span class="line">  # raphael:   # optional, the source url of raphael.js</span><br><span class="line">  # flowchart: # optional, the source url of flowchart.js</span><br><span class="line">  options: # options used for &#96;drawSVG</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/20/flowchart/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">flowchart</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/flowchart/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-runtime4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/26/runtime4/">Runtime(四)</a>
+    <h1 class="article-title" itemprop="name">
+      Runtime(四)
     </h1>
   
 
@@ -343,106 +177,85 @@
 <li>Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes)动态创建一个类（参数：父类，类名，额外的内存空间）</li>
 <li>注册一个类（要在类注册之前添加成员变量）void objc_registerClassPair(Class cls) </li>
 <li>销毁一个类<br>void objc_disposeClassPair(Class cls)</li>
-<li>获取isa指向的Class<br>Class object_getClass(id obj)
-        
-          <a class="article-more-a" href="/2018/07/26/runtime4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/26/runtime4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-runtime-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/runtime-3/">Runtime(三)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/24/runtime-3/" class="archive-article-date">
-  	<time datetime="2018-07-23T17:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h1><h2 id="runtime-objc-msgSend"><a href="#runtime-objc-msgSend" class="headerlink" title="runtime objc_msgSend"></a>runtime objc_msgSend</h2><ul>
-<li>OC中的方法调用，其实都是转换为objc_msgSend函数的调用</li>
-<li>函数调用转换为了objc_msgSend 传入了方法接收者和SEL</li>
-<li>objc_msgSend的执行流程可以分为3大阶段<ol>
-<li>消息发送 </li>
-<li>动态方法解析</li>
-<li>消息转发</li>
+<li>获取isa指向的Class<br>Class object_getClass(id obj)<a id="more"></a></li>
+<li>设置isa指向的Class<br>Class object_setClass(id obj, Class cls)</li>
+<li>判断一个OC对象是否为Class<br>BOOL object_isClass(id obj)</li>
+<li>判断一个Class是否为元类<br>BOOL class_isMetaClass(Class cls)</li>
+<li>获取父类<br>Class class_getSuperclass(Class cls) </li>
 </ol>
+<h3 id="API-成员变量"><a href="#API-成员变量" class="headerlink" title="API - 成员变量"></a>API - 成员变量</h3><ol>
+<li><p>获取一个实例变量信息<br>Ivar class_getInstanceVariable(Class cls, const char *name)</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSObject *obj &#x3D; [[NSObject alloc] init];</span><br><span class="line">[obj finalize];</span><br><span class="line">[NSObject initialize]</span><br><span class="line">objc_msgSend(obj,sel_registerName(&quot;finalize&quot;));</span><br><span class="line">objc_msgSend([NSObject class],sel_registerName(&quot;initialize&quot;));</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/07/24/runtime-3/#more">more >></a>
-        
+<li><p>拷贝实例变量列表（最后需要调用free释放）<br>Ivar *class_copyIvarList(Class cls, unsigned int *outCount)</p>
+</li>
+<li><p>设置和获取成员变量的值<br>void object_setIvar(id obj, Ivar ivar, id value)<br>id object_getIvar(id obj, Ivar ivar)</p>
+</li>
+<li><p>动态添加成员变量（已经注册的类是不能动态添加成员变量的）<br>BOOL class_addIvar(Class cls, const char * name, size_t size, uint8_t alignment, const char * types)</p>
+</li>
+<li><p>获取成员变量的相关信息<br>const char *ivar_getName(Ivar v)<br>const char *ivar_getTypeEncoding(Ivar v)</p>
+</li>
+<li><p>获取一个实例变量信息<br>Ivar class_getInstanceVariable(Class cls, const char *name)</p>
+</li>
+<li><p>拷贝实例变量列表（最后需要调用free释放）<br>Ivar *class_copyIvarList(Class cls, unsigned int *outCount)</p>
+</li>
+<li><p>设置和获取成员变量的值<br>void object_setIvar(id obj, Ivar ivar, id value)<br>id object_getIvar(id obj, Ivar ivar)</p>
+</li>
+<li><p>动态添加成员变量（已经注册的类是不能动态添加成员变量的）<br>BOOL class_addIvar(Class cls, const char * name, size_t size, uint8_t alignment, const char * types)</p>
+</li>
+<li><p>获取成员变量的相关信息<br>const char *ivar_getName(Ivar v)<br>const char *ivar_getTypeEncoding(Ivar v)</p>
+</li>
+</ol>
+<h3 id="API-–-属性"><a href="#API-–-属性" class="headerlink" title="API – 属性"></a>API – 属性</h3><ol>
+<li><p>获取一个属性<br>objc_property_t class_getProperty(Class cls, const char *name)</p>
+</li>
+<li><p>拷贝属性列表（最后需要调用free释放）<br>objc_property_t *class_copyPropertyList(Class cls, unsigned int *outCount)</p>
+</li>
+<li><p>动态添加属性<br>BOOL class_addProperty(Class cls, const char *name, const objc_property_attribute_t *attributes,</p>
+<pre><code>unsigned int attributeCount)</code></pre></li>
+<li><p>动态替换属性<br>void class_replaceProperty(Class cls, const char *name, const objc_property_attribute_t *attributes,</p>
+<pre><code>unsigned int attributeCount)</code></pre></li>
+<li><p>获取属性的一些信息<br>const char *property_getName(objc_property_t property)<br>const char *property_getAttributes(objc_property_t property)</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 动态创建一个类</span><br><span class="line">Class cls &#x3D; objc_allocateClassPair([NSObject class], &quot;Car&quot;, 0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加成员变量</span><br><span class="line">class_addIvar(cls, &quot;name&quot;, sizeof(NSString *), 0, &quot;@&quot;);</span><br><span class="line">class_addIvar(cls, &quot;age&quot;, 4, 0, @encode(int));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加方法</span><br><span class="line">class_addMethod(cls, @selector(run), (IMP)run, &quot;v@:&quot;);</span><br><span class="line"></span><br><span class="line">objc_registerClassPair(cls);</span><br><span class="line"></span><br><span class="line">id newCls &#x3D; [[cls alloc] init];</span><br><span class="line">[newCls setValue:@&quot;ccc&quot; forKey:@&quot;name&quot;];</span><br><span class="line">[newCls setValue:@12 forKey:@&quot;age&quot;];</span><br><span class="line"></span><br><span class="line">[newCls run];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取变量信息和类型</span><br><span class="line">Ivar ageIvar &#x3D; class_getInstanceVariable([newCls class], &quot;age&quot;);</span><br><span class="line">Ivar nameIvar &#x3D; class_getInstanceVariable([newCls class], &quot;name&quot;);</span><br><span class="line">NSLog(@&quot;%s %s ,%s %s &quot;,ivar_getName(ageIvar),</span><br><span class="line">      ivar_getTypeEncoding(ageIvar),</span><br><span class="line">      ivar_getName(nameIvar),</span><br><span class="line">      ivar_getTypeEncoding(nameIvar));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取isa指向的class</span><br><span class="line">NSLog(@&quot;%@&quot;,NSStringFromClass(object_getClass(cls)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取所有成员变量</span><br><span class="line">unsigned int count ;</span><br><span class="line">Ivar *ivars &#x3D; class_copyIvarList([newCls class], &amp;count);</span><br><span class="line">for (int i &#x3D; 0; i &lt; count; i++) &#123;</span><br><span class="line">    Ivar ivar &#x3D; ivars[i];</span><br><span class="line">     NSLog(@&quot;%s %s&quot;, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</span><br><span class="line">&#125;</span><br><span class="line">free(ivars);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">objc_disposeClassPair(cls);</span><br></pre></td></tr></table></figure>
+<h3 id="API-方法"><a href="#API-方法" class="headerlink" title="API - 方法"></a>API - 方法</h3><ol>
+<li><p>获得一个实例方法、类方法<br>Method class_getInstanceMethod(Class cls, SEL name)<br>Method class_getClassMethod(Class cls, SEL name)</p>
+</li>
+<li><p>方法实现相关操作<br>IMP class_getMethodImplementation(Class cls, SEL name)<br>IMP method_setImplementation(Method m, IMP imp)<br>void method_exchangeImplementations(Method m1, Method m2) </p>
+</li>
+<li><p>拷贝方法列表（最后需要调用free释放）<br>Method *class_copyMethodList(Class cls, unsigned int *outCount)</p>
+</li>
+<li><p>动态添加方法<br>BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)</p>
+</li>
+<li><p>动态替换方法<br>IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)</p>
+</li>
+<li><p>获取方法的相关信息（带有copy的需要调用free去释放）<br>SEL method_getName(Method m)<br>IMP method_getImplementation(Method m)<br>const char *method_getTypeEncoding(Method m)<br>unsigned int method_getNumberOfArguments(Method m)<br>char *method_copyReturnType(Method m)<br>char *method_copyArgumentType(Method m, unsigned int index)</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+ (void)load&#123;</span><br><span class="line">    </span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        </span><br><span class="line">        Method method1 &#x3D; class_getInstanceMethod([self class], @selector(test));</span><br><span class="line">        Method method2 &#x3D; class_getInstanceMethod([self class], @selector(run));</span><br><span class="line">        </span><br><span class="line">        method_exchangeImplementations(method1, method2);</span><br><span class="line">        </span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)test</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;%s&quot;,__func__);</span><br><span class="line">&#125;</span><br><span class="line">- (void)run</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;%s&quot;,__func__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -470,16 +283,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/24/runtime-3/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/26/runtime4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/20/flowchart/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hexo-flowchart
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/24/runtime-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Runtime(三)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -499,470 +380,14 @@
 
 
 
-
   
-    <article id="post-runtime-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/runtime-2/">Runtime(二)</a>
-    </h1>
   
 
-        
-        <a href="/2018/07/24/runtime-2/" class="archive-article-date">
-  	<time datetime="2018-07-23T16:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h1><h2 id="runtime-Class-方法"><a href="#runtime-Class-方法" class="headerlink" title="runtime Class-方法"></a>runtime Class-方法</h2><h3 id="Class的结构"><a href="#Class的结构" class="headerlink" title="Class的结构"></a>Class的结构</h3><p>图片</p>
-<ul>
-<li>通过上一章节看到bits就可以知道用它来进行&amp;运算 从内存地址抠出来一段可以获得更多信息<h4 id="bit-amp-FAST-DATA-MAS得到一个可读可写的struct"><a href="#bit-amp-FAST-DATA-MAS得到一个可读可写的struct" class="headerlink" title="bit &amp; FAST_DATA_MAS得到一个可读可写的struct"></a>bit &amp; FAST_DATA_MAS得到一个可读可写的struct</h4><ul>
-<li>这里包含了</li>
-<li>这里包含方法列表 属性列表 协议列表<ul>
-<li>这些列表是二维数组 method_arrat_t 存着 method_list_t 存着method_t 我们平时所调用的函数就会被包装成一个method_t对象</li>
-<li>程序会把ro里的方法放到这里 然后Category的方法也会放在这里并且在数组前面</li>
-</ul>
-</li>
-<li>这个rw里存放着一个ro也就是只读的struct<ul>
-<li>class_ro_t里的方法是一维数组 直接存的方法 系统一开始</li>
-<li>还存放着变量</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>method 上面提了就是对方法函数的封装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct method_t &#123;</span><br><span class="line">SEL name; &#x2F;&#x2F; 函数名</span><br><span class="line">const char *types; &#x2F;&#x2F; 参数类型返回值的编码</span><br><span class="line">IMP imp  &#x2F;&#x2F; 指向函数的指针 （函数地址）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/07/24/runtime-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/24/runtime-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-runtime-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/runtime-1/">Runtime(一)</a>
-    </h1>
   
 
-        
-        <a href="/2018/07/23/runtime-1/" class="archive-article-date">
-  	<time datetime="2018-07-23T15:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h1><h2 id="runtime介绍-预备知识"><a href="#runtime介绍-预备知识" class="headerlink" title="runtime介绍 预备知识"></a>runtime介绍 预备知识</h2><ul>
-<li><p>Objective-C是一门动态性比较强的编程语言，跟C、C++等语言有着很大的不同</p>
-</li>
-<li><p>如一个C函数 的流程 编写代码-&gt;编译连接-&gt;运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void __cfuntion()</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;%s&quot;,__func__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>OC可以办到在运行的时候运行中修改一些编译好的行为</p>
-</li>
-<li><p>OC也可以进行动态的添加</p>
-</li>
-<li><p>Objective-C的动态性是由Runtime API来支撑的</p>
-</li>
-<li><p>Runtime API提供的接口基本都是C语言的，源码由C\C++\汇编语言编写</p>
-        
-          <a class="article-more-a" href="/2018/07/23/runtime-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/23/runtime-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-zjh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/06/zjh/">浅谈我经历的组件化之路</a>
-    </h1>
   
 
-        
-        <a href="/2017/12/06/zjh/" class="archive-article-date">
-  	<time datetime="2017-12-05T16:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="浅谈我经历的组件化之路"><a href="#浅谈我经历的组件化之路" class="headerlink" title="浅谈我经历的组件化之路"></a>浅谈我经历的组件化之路</h1><p><img src="/photos/zjh/WX20181024-163023.png" alt=""></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>因为公司的项目很多，大多是商城类app，就算不是商城类的app有很多功能性的东西也是重复的，所以很早在写代码时候就是模块的形式了，这样管理起来重用起来更方便，所以公司的项目从某种角度来说已经很大程度上的进行了组件化开发。</p>
-<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
-<li>从最开始我们只有基础库进行了pods管理，然后其他的组件如订单、购物车、shop、评价系统、feed流等等都是通过物理文件夹划分然后进行一个拖拽。</li>
-<li>后来我对其他的业务组件也进行了pods私有化</li>
-<li>然后考虑到了编译速度等问题有进行了二进制化并且与源码切换</li>
-<li>后来又进行了自动化的上传、编译等操作
-        
-          <a class="article-more-a" href="/2017/12/06/zjh/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">组件化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/06/zjh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-iOS开发规范草稿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">iOS设计开发规范草稿</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" class="archive-article-date">
-  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="sketch规范"><a href="#sketch规范" class="headerlink" title="sketch规范"></a>sketch规范</h1><h3 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h3><ul>
-<li>一致性:边距稳定8，12，20等；字体大小稳定；相似列表的相似图片，例如封面、头像尺寸一致；</li>
-<li>可测量性:衡量可测量性的标准是，选中某个元素后，右侧面板就能给出具体位置、大小、字体、颜色等信息，而无需再测量，计算。例如一个列表，从外观上而言，可以用一个很大的白色背景图，在上面放几条横线就达到视觉效果了。但是这样不能直接得出一行的高度。因此应该有一个和设计行高一致的背景，在上面布局其他元素。</li>
-<li>可导出性:资源文件应该直接导出就能用，无需裁剪；对于复杂效果，不易导出的，应该在附近给出高倍图。</li>
-<li>简约:配色稳定、单一、种类少；较少例如渐变，需要复杂层叠才能产生的效果</li>
-<li>聚合:层叠的元素应该成组</li>
-<li>完备性:有些图标可能有多种状态，应在附近给出其他状态的图，例如选中和非选中，有红点和没红点等，无星半星全星等。设计稿上可能只展示了一半的内容，但是真实交互会出现完整图片的，应在附近给出全图。</li>
-<li>模块复用</li>
-</ul>
-<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ul>
-<li>sketch设计稿文件名按x.x.x.x  前三位是App版本号，没有说明的情况下为1.0.0，后一位是该版本下的迭代号，无上限</li>
-<li>对icon名字暂不作要求</li>
-<li>建议在设计稿某个显眼位置，记录各版本更新描述</li>
-<li>建议保留各最终发布版本对应的设计稿
-        
-          <a class="article-more-a" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人信息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/1994/01/01/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/">个人简历</a>
-    </h1>
-  
-
-        
-        <a href="/1994/01/01/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/" class="archive-article-date">
-  	<time datetime="1993-12-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1994-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">姓名：任梦晗                       性别：男    </span><br><span class="line">现居：杭州市                       电话：13004588611</span><br><span class="line">专业：软件工程                      学历：统招本科</span><br><span class="line">工作年限：4年                      电子邮件：mrren888@163.com         </span><br><span class="line">个人博客：https:&#x2F;&#x2F;renmenghan.github.io&#x2F;</span><br></pre></td></tr></table></figure>
-<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2018.03 - 至今 	 | 上海车磐科技有限公司   | iOS开工程师</span><br><span class="line"></span><br><span class="line">2017.03 - 2018.03  | 瓜舟网络科技有限公司   | iOS开工程师</span><br><span class="line"></span><br><span class="line">2016.04 - 2017.03  | 杭州致青春科技有限公司 | iOS开发工程师</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/1994/01/01/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">个人简历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/1994/01/01/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -985,8 +410,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
