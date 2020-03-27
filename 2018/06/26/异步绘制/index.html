@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: iOS | Edison‘s Blog</title>
+  <title>异步绘制 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/iOS/index.html">
+  <meta name="description" content="一、UIView如何显示内容当我们操作UI时，例如改变frame、更新UIView&#x2F;CALayer，或者自己去调用setNeedsLayout&#x2F;setNeedsDisplay方法，UIView会调用-[CALayer setNeedsLayout]&#x2F;-[CALayer setNeedsDisplay]方法，给layer上打上一个脏标记，意味着需要重绘。但是只有在下一次runloop即将结束的时候才">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异步绘制">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="一、UIView如何显示内容当我们操作UI时，例如改变frame、更新UIView&#x2F;CALayer，或者自己去调用setNeedsLayout&#x2F;setNeedsDisplay方法，UIView会调用-[CALayer setNeedsLayout]&#x2F;-[CALayer setNeedsDisplay]方法，给layer上打上一个脏标记，意味着需要重绘。但是只有在下一次runloop即将结束的时候才">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/photos/interview/16d6628854c7bc64.jpeg">
+<meta property="og:image" content="http://yoursite.com/photos/interview/16d6628854f45922.jpeg">
+<meta property="article:published_time" content="2018-06-26T14:21:00.000Z">
+<meta property="article:modified_time" content="2020-03-27T03:10:01.816Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="性能优化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/photos/interview/16d6628854c7bc64.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
   
@@ -146,272 +156,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-异步绘制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/CrackQp/" class="archive-article-date">
-  	<time datetime="2020-03-05T17:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/CrackQp/">CrackQp 破解趣拍（持续更新。。）</a>
+    <h1 class="article-title" itemprop="name">
+      异步绘制
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/runtime4/" class="archive-article-date">
-  	<time datetime="2018-07-26T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/runtime4/">Runtime(四)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/runtime-3/" class="archive-article-date">
-  	<time datetime="2018-07-23T17:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/runtime-3/">Runtime(三)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/runtime-2/" class="archive-article-date">
-  	<time datetime="2018-07-23T16:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/runtime-2/">Runtime(二)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/23/runtime-1/" class="archive-article-date">
-  	<time datetime="2018-07-23T15:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/runtime-1/">Runtime(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/" class="archive-article-date">
+        
+        <a href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/" class="archive-article-date">
   	<time datetime="2018-06-26T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/">异步绘制</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、UIView如何显示内容"><a href="#一、UIView如何显示内容" class="headerlink" title="一、UIView如何显示内容"></a>一、UIView如何显示内容</h3><p>当我们操作UI时，例如改变frame、更新UIView/CALayer，或者自己去调用setNeedsLayout/setNeedsDisplay方法，UIView会调用-[CALayer setNeedsLayout]/-[CALayer setNeedsDisplay]方法，给layer上打上一个脏标记，意味着需要重绘。但是只有在下一次runloop即将结束的时候才会调用[CALayer display],而这个方法会判断是否实现了displayLayer这个方法，如果没有实现，那么走系统<br>调用</p>
+<p><img src="/photos/interview/16d6628854c7bc64.jpeg" alt=""></p>
+<a id="more"></a>
+<blockquote>
+<p>系统绘制</p>
+</blockquote>
+<p>我们首先看一下系统绘制，当[CALayer dispaly]方法调用的时候，他会检查-dispalyerLayer方法是否被实现了，若没有实现则我们调用系统的绘制方法。首先 CALayer会生成一个backing store(CGContextRef)，每个layer都有一个content，这个content指向的一块缓存称为backing store。如果layer有delegate，则调用delegate的- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx方法，否则调用-[CALayer drawInContext:]方法,进而调用[UIView drawRect:]方法。<br>UIKit会将这个conext推到系统的context堆栈中，如果在draw rect中通过UIGraphicsGetCurrentContext() 取得的CGContextRef就是CALayer生成的这个实例。所有的绘制操作也会在这块Context上生效。<br>CPU 执行完draw rect之后，通过context将数据写入backing  store。当backing store写完之后，通过rendserver交给GPU去渲染，将backing  store中的bitmap数据显示在屏幕上<br><img src="/photos/interview/16d6628854f45922.jpeg" alt=""></p>
+<h2 id="UIKit遇到的问题"><a href="#UIKit遇到的问题" class="headerlink" title="UIKit遇到的问题"></a>UIKit遇到的问题</h2><p>iOS的mainLoop是一个60fps的回掉，即16.7毫秒绘制一次屏幕。这个时间内要完成view的缓冲区创建，view内容的绘制，这些是cpu的工作，cpu完成之后交给GPU去渲染，这个过程又包含了多个view的拼接，纹理的渲染，最终渲染在屏幕上。如果这个时候，cpu做了很多工作，view层次过于复杂，图片过大，导致gpu压力也很大，那么就会出现迪奥帧的现象，也就是表现在我们的眼里的“卡”。<br>如果我们所有的绘制任务都交给UIKit去做，因为UIKit不是线程安全的，所以官方也建议我们只在主线程操作。那么就无法利用cpu多核的优势，无法异步的进行绘制，但是通过对UIView绘制原理的了解我们知道，在异步绘制是有他的理论基础的。</p>
+<h2 id="三、异步绘制的原理"><a href="#三、异步绘制的原理" class="headerlink" title="三、异步绘制的原理"></a>三、异步绘制的原理</h2><p>iOS里面的视图UIView中有一个CALayer *layer的属性，UIView的内容，其实是layer显示的，layer中有一个属性id contents，contents的内容就是要显示的具体内容，大多数情况下，contents的值是一张图片。我们常用的无论是 UILabel还是 UIImageView里面显示的内容，其实都是绘制在一张画布上，绘制完成从画布中导出图片，再把图片赋值给layer.contents就完成了显示。</p>
+<p>异步绘制，就是异步在画布上绘制内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TestView *view &#x3D; [[TestView alloc] initWithFrame:CGRectMake(100, 100, 150, 150)];</span><br><span class="line">view.text &#x3D; @&quot;异步绘制&quot;;</span><br><span class="line">[self.view addSubview:view];</span><br><span class="line">[view.layer setNeedsDisplay];</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;TestView.h&quot;</span><br><span class="line">#import &lt;CoreText&#x2F;CoreText.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@implementation TestView</span><br><span class="line">&#x2F;&#x2F; 异步绘制入口 &#x2F;&#x2F; 没有实现该方法则会调用系统绘制</span><br><span class="line">- (void)displayLayer:(CALayer *)layer</span><br><span class="line">&#123;    </span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;queue&quot;,DISPATCH_QUEUE_CONCURRENT );</span><br><span class="line">    dispatch_async(queue, ^&#123;</span><br><span class="line">        __block CGSize size &#x3D; CGSizeZero;</span><br><span class="line">        __block CGFloat scale &#x3D; 1.0;</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">             size &#x3D; self.bounds.size;</span><br><span class="line">             scale &#x3D; [UIScreen mainScreen].scale;</span><br><span class="line">        &#125;);</span><br><span class="line">        UIGraphicsBeginImageContextWithOptions(size, NO, scale);</span><br><span class="line"></span><br><span class="line">        CGContextRef context &#x3D; CGBitmapContextCreate(NULL, size.width, size.height, 8, size.width * 4, CGColorSpaceCreateDeviceRGB( ),  (CGBitmapInfo)kCGImageAlphaPremultipliedLast);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;        CGContextRef context &#x3D;  UIGraphicsGetCurrentContext();</span><br><span class="line">        </span><br><span class="line">        CGContextSetTextMatrix(context, CGAffineTransformIdentity);</span><br><span class="line">        CGContextTranslateCTM(context, 0, size.height);</span><br><span class="line">        CGContextScaleCTM(context, 1.0,-1.0);</span><br><span class="line">        </span><br><span class="line">        CGMutablePathRef path &#x3D; CGPathCreateMutable();</span><br><span class="line">        CGPathAddRect(path, NULL, CGRectMake(0, 0, size.width, size.height));</span><br><span class="line">        NSMutableAttributedString * attString &#x3D; [[NSMutableAttributedString alloc] initWithString:self.text];</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;设置字体</span><br><span class="line">        [attString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, self.text.length)];</span><br><span class="line">        </span><br><span class="line">        CTFramesetterRef framesetter &#x3D; CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);</span><br><span class="line">        CTFrameRef frame &#x3D; CTFramesetterCreateFrame(framesetter, CFRangeMake(0, attString.length), path, NULL);</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;把frame绘制到context里</span><br><span class="line">        CTFrameDraw(frame, context);</span><br><span class="line">        </span><br><span class="line">        UIImage *image &#x3D; UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">        UIGraphicsEndImageContext();</span><br><span class="line">        </span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.layer.contents &#x3D;  (__bridge id _Nullable)(image.CGImage);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -431,121 +241,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+<nav id="article-nav">
+  
+    <a href="/2018/07/23/runtime-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Runtime(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/06/zjh/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈我经历的组件化之路</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/06/zjh/" class="archive-article-date">
-  	<time datetime="2017-12-05T16:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/06/zjh/">浅谈我经历的组件化之路</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">组件化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" class="archive-article-date">
-  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">iOS设计开发规范草稿</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -568,9 +372,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
