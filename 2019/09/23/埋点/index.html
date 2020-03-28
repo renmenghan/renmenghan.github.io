@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Edison‘s Blog</title>
+  <title>无侵入的埋点方案如何实现 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="无侵入的埋点方案埋点原有 了解用户使用app行为 降低分析线上问题的难度iOS 开发中常见的埋点方式 代码埋点（通过手写代码方式埋点 很精确 但是耦合度高 工作量大 不好维护） 可视化埋点 （将埋点增加修改工作可视化了，提升了增加和维护埋点的体验） 无埋点 （并不是不埋点  可以理解为全埋点 埋点代码不会出现在业务代码中，容易维护管理， 缺点在于埋点成本高、后期的解析比较复杂，而且viewpath">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无侵入的埋点方案如何实现">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/%E5%9F%8B%E7%82%B9/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="无侵入的埋点方案埋点原有 了解用户使用app行为 降低分析线上问题的难度iOS 开发中常见的埋点方式 代码埋点（通过手写代码方式埋点 很精确 但是耦合度高 工作量大 不好维护） 可视化埋点 （将埋点增加修改工作可视化了，提升了增加和维护埋点的体验） 无埋点 （并不是不埋点  可以理解为全埋点 埋点代码不会出现在业务代码中，容易维护管理， 缺点在于埋点成本高、后期的解析比较复杂，而且viewpath">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-09-23T15:28:00.000Z">
+<meta property="article:modified_time" content="2020-03-28T06:59:15.354Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="架构">
+<meta property="article:tag" content="埋点">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
@@ -146,36 +153,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-埋点" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/CrackQp/" class="archive-article-date">
-  	<time datetime="2020-03-05T17:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/CrackQp/">CrackQp 破解趣拍（持续更新。。）</a>
+    <h1 class="article-title" itemprop="name">
+      无侵入的埋点方案如何实现
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/23/%E5%9F%8B%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2019-09-23T15:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="无侵入的埋点方案"><a href="#无侵入的埋点方案" class="headerlink" title="无侵入的埋点方案"></a>无侵入的埋点方案</h1><h2 id="埋点原有"><a href="#埋点原有" class="headerlink" title="埋点原有"></a>埋点原有</h2><ol>
+<li>了解用户使用app行为</li>
+<li>降低分析线上问题的难度<h2 id="iOS-开发中常见的埋点方式"><a href="#iOS-开发中常见的埋点方式" class="headerlink" title="iOS 开发中常见的埋点方式"></a>iOS 开发中常见的埋点方式</h2></li>
+<li>代码埋点（通过手写代码方式埋点 很精确 但是耦合度高 工作量大 不好维护）</li>
+<li>可视化埋点 （将埋点增加修改工作可视化了，提升了增加和维护埋点的体验）</li>
+<li>无埋点 （并不是不埋点  可以理解为全埋点 埋点代码不会出现在业务代码中，容易维护管理， 缺点在于埋点成本高、后期的解析比较复杂，而且viewpath的不确定性，所以这种方案并不能解决所有的买点需求，但对于大量通用的埋点需求来说，能节省大量的开发和维护成本）</li>
+<li>以上 2 3都属于无侵入埋点 因为他们都不需要再工程代码中写入埋点代码，所以使用这种方案可以进行埋点统一维护，也可以实现代码的解耦</li>
+</ol>
+<h3 id="运行时方法替换方式进行埋点"><a href="#运行时方法替换方式进行埋点" class="headerlink" title="运行时方法替换方式进行埋点"></a>运行时方法替换方式进行埋点</h3><a id="more"></a>
+<p><a href="https://renmenghan.github.io/2018/07/23/runtime-1/" target="_blank" rel="noopener">runtime一</a><br><a href="https://renmenghan.github.io/2018/07/24/runtime-2/" target="_blank" rel="noopener">runtime二</a><br><a href="https://renmenghan.github.io/2018/07/24/runtime-3/" target="_blank" rel="noopener">runtime三</a><br><a href="https://renmenghan.github.io/2018/07/26/runtime4/" target="_blank" rel="noopener">runtime四</a></p>
+<ul>
+<li>在iOS开发中常见的三种埋点 就是对页面进入的次数、停留时间、点击事件进行埋点<br>对于这三种情况我们都可以通过运行时方法来进行埋点，实现无入侵的埋点方法。</li>
+<li>具体实现方法：运行时替换方法 我们可以统一写一个hook类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;TTHook.h&quot;</span><br><span class="line">#import &lt;objc&#x2F;runtime.h&gt;</span><br><span class="line">@implementation TTHook</span><br><span class="line"></span><br><span class="line">+ (void)hookClass:(Class)classObject fromSelection:(SEL)fromSelection toSelection:(SEL)toSelection</span><br><span class="line">&#123;</span><br><span class="line">    Class class &#x3D; classObject;</span><br><span class="line">    </span><br><span class="line">    Method fromMethod &#x3D; class_getInstanceMethod(class, fromSelection);</span><br><span class="line">    </span><br><span class="line">    Method toMethod &#x3D; class_getInstanceMethod(class, toSelection);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; class_add返回成功表示被替换的方法没实现 然后通过该方法先实现</span><br><span class="line">    if (class_addMethod(class, fromSelection, method_getImplementation(toMethod), method_getTypeEncoding(toMethod))) &#123;</span><br><span class="line">        </span><br><span class="line">        class_replaceMethod(class, toSelection, method_getImplementation(fromMethod), method_getTypeEncoding(fromMethod));</span><br><span class="line">        </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        </span><br><span class="line">        method_exchangeImplementations(fromMethod, toMethod);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>页面进入次数、页面停留时间都需要对 UIViewController 生命周期进行埋点可以对UIViewController创建一个Category</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">+ (void)load</span><br><span class="line">&#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        </span><br><span class="line">        SEL fromSelectorAppear &#x3D; @selector(viewWillAppear:);</span><br><span class="line">        SEL toSelectorAppear &#x3D; @selector(hook_viewWillAppear:);</span><br><span class="line">        </span><br><span class="line">        [TTHook hookClass:self fromSelection:fromSelectorAppear toSelection:toSelectorAppear];</span><br><span class="line">        SEL fromSelectorDisappear &#x3D; @selector(viewWillDisappear:);</span><br><span class="line">        SEL toSelectorDisappear &#x3D; @selector(hook_viewWillDisappear:);</span><br><span class="line">        [TTHook hookClass:self fromSelection:fromSelectorDisappear toSelection:toSelectorDisappear];</span><br><span class="line">        </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)hook_viewWillAppear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 执行插入 代码 再执行原来viewwillappear代码</span><br><span class="line">    [self insertToViewWillAppear];</span><br><span class="line">    &#x2F;&#x2F; 因为交换了方法 类的方法列表里存储的方法实现地址进行了交换所以要调用该方法 （不记得之前runtime文章有没有记录了。。）</span><br><span class="line">    [self hook_viewWillAppear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)hook_viewWillDisappear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">    [self insertToViewWillDisappear];</span><br><span class="line">    [self hook_viewWillDisappear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (void)insertToViewWillAppear</span><br><span class="line">&#123;</span><br><span class="line"> &#x2F;&#x2F; 在 ViewWillAppear 时进行日志的埋点</span><br><span class="line">    NSLog(@&quot;%@&quot;,[NSString stringWithFormat:@&quot;%@ Appear&quot;,NSStringFromClass([self class])]);</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)insertToViewWillDisappear</span><br><span class="line">&#123;</span><br><span class="line"> &#x2F;&#x2F; 在 ViewWillDisappear 时进行日志的埋点</span><br><span class="line">    NSLog(@&quot;%@&quot;,[NSString stringWithFormat:@&quot;%@ Disappear&quot;,NSStringFromClass([self class])]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于点击事件来说，我们也可以通过运行时方法替换的方式进行无侵入埋点。<br>找到这个点击事件的方法 sendAction:to:forEvent:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;UIButton+Logger.h&quot;</span><br><span class="line">#import &quot;TTHook.h&quot;</span><br><span class="line">@implementation UIButton (Logger)</span><br><span class="line"></span><br><span class="line">+ (void)load</span><br><span class="line">&#123;</span><br><span class="line">    SEL fromSelector &#x3D; @selector(sendAction:to:forEvent:);</span><br><span class="line">    SEL toSelector &#x3D; @selector(hook_sendAction:to:forEvent:);</span><br><span class="line">    [TTHook hookClass:self fromSelection:fromSelector toSelection:toSelector];</span><br><span class="line">&#125;</span><br><span class="line"> - (void)hook_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">     [self insertToSendAction:action to:target forEvent:event];</span><br><span class="line">     [self hook_sendAction:action to:target forEvent:event];</span><br><span class="line">     </span><br><span class="line">&#125;</span><br><span class="line">- (void)insertToSendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 记录日志</span><br><span class="line">    if ([[[event allTouches] anyObject] phase] &#x3D;&#x3D; UITouchPhaseEnded)&#123;</span><br><span class="line">        NSString *actionString &#x3D; NSStringFromSelector(action);</span><br><span class="line">        NSString *targetName &#x3D; NSStringFromClass([target class]);</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;%@ %@&quot;,targetName,actionString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里和Controller不同的是button在一个视图类中可能有多个不同的继承类。相同UIbutton的子类在不同视图类的埋点也要区分开。可以通过 action + class组合</li>
+<li>其他控件也可以使用这种方法进行埋点 手势可以hook initWithTaget:action:</li>
+</ul>
+<h4 id="时间唯一标识"><a href="#时间唯一标识" class="headerlink" title="时间唯一标识"></a>时间唯一标识</h4><ul>
+<li>通过运行时方法替换的方式，我们能够 hook 住所有的 Objective-C 方法，可以说是大而全了，能够帮助我们解决绝大部分的埋点问题</li>
+<li>但是，这种方案的精确度还不够高，还无法区分相同类在不同视图树节点的情况。比如，一个视图下相同 UIButton 的不同实例，仅仅通过 “action 选择器名”+“视图类名”的组合还不能够区分开。这时，我们就需要有一个唯一标识来区分不同的事件。接下来，我就跟你说说如何制定出这个唯一标识。</li>
+<li>如果通过视图层级路径由于视图树的子节点有可能是同一个类的不同实例，所以还是不能准确区分</li>
+<li>每个子视图在父视图中都有自己的索引，所以如果我们再加上这个索引的话，每个视图标识就是唯一的了</li>
+</ul>
+<blockquote>
+<p>但是viewpath+索引还是不能够覆盖所有情况 如UITableViewCell 这种具有可复用机制的视图<br>这时候我们可以通过indexPath来解决<br>还有我们视图层级如果被修改 insert remove 等也无法得到唯一标识</p>
+</blockquote>
+<h4 id="所以运用运行时方法替换进行无侵入埋点很难覆盖所有情况，但还是解决了大部分埋点需求。"><a href="#所以运用运行时方法替换进行无侵入埋点很难覆盖所有情况，但还是解决了大部分埋点需求。" class="headerlink" title="所以运用运行时方法替换进行无侵入埋点很难覆盖所有情况，但还是解决了大部分埋点需求。"></a>所以运用运行时方法替换进行无侵入埋点很难覆盖所有情况，但还是解决了大部分埋点需求。</h4>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,25 +250,125 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">埋点</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/23/%E5%9F%8B%E7%82%B9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/06/CrackQp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CrackQp 破解趣拍（持续更新。。）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/20/flowchart/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo-flowchart</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,8 +391,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
