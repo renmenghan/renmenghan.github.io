@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS如何全面监控崩溃 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS如何全面监控崩溃App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，开发人员都是企盼着线下随便崩怎么都好说线上可别崩，但是崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。">
+  <meta name="description" content="iOS如何全面监控崩溃App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS如何全面监控崩溃">
 <meta property="og:url" content="http://yoursite.com/2019/10/06/iOS%E7%9B%91%E6%8E%A7%E5%B4%A9%E6%BA%83/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
-<meta property="og:description" content="iOS如何全面监控崩溃App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，开发人员都是企盼着线下随便崩怎么都好说线上可别崩，但是崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。">
+<meta property="og:description" content="iOS如何全面监控崩溃App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/photos/xnyh/WX20200329-122108@2x.png">
 <meta property="article:published_time" content="2019-10-05T16:36:00.000Z">
-<meta property="article:modified_time" content="2020-03-29T04:21:36.239Z">
+<meta property="article:modified_time" content="2020-03-29T04:43:00.531Z">
 <meta property="article:author" content="edison">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="架构">
@@ -176,30 +176,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="iOS如何全面监控崩溃"><a href="#iOS如何全面监控崩溃" class="headerlink" title="iOS如何全面监控崩溃"></a>iOS如何全面监控崩溃</h1><p>App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，开发人员都是企盼着线下随便崩怎么都好说线上可别崩，但是崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。<br><img src="/photos/xnyh/WX20200329-122108@2x.png" alt=""></p>
+        <h1 id="iOS如何全面监控崩溃"><a href="#iOS如何全面监控崩溃" class="headerlink" title="iOS如何全面监控崩溃"></a>iOS如何全面监控崩溃</h1><p>App上线之后，程序的崩溃往往是最令人害怕的，测试版本没有问题，但是怎么就发布之后就崩溃了呢，崩溃了怎么办，我们怎么采集崩溃信息，并且全面的采集、分析、解决呢。<br><img src="/photos/xnyh/WX20200329-122108@2x.png" alt=""></p>
 <a id="more"></a>
 <p>App崩溃的原因</p>
 <ol>
-<li>代码编写问题<ol>
+<li>代码编写问题<ul>
 <li>数组越界：在取数据索引时越界，App 会发生崩溃。还有一种情况，就是给数组添加了 nil 会崩溃</li>
 <li>多线程问题：在子线程中进行 UI 更新可能会发生崩溃。多个线程进行数据的读取操作，因为处理时机不一致，比如有一个线程在置空数据的同时另一个线程在读取这个数据，可能会出现崩溃情况</li>
-<li>主线程无响应：如果主线程超过系统规定的时间无响应，就会被 Watchdog 杀掉。这时，崩溃问题对应的异常编码是 0x8badf00d。（下边会有异常编码说明）</li>
-<li>指针指向一个已删除的对象访问内存区域时，会出现野指针崩溃。野指针问题是需要我们重点关注的，因为它是导致 App 崩溃的最常见，也是最难定位的一种情况</li>
-</ol>
+<li>主线程无响应：如果主线程超过系统规定的时间无响应，就会被Watchdog杀掉。这时，崩溃问题对应的异常编码是0x8badf00d。（下边会有异常编码说明）</li>
+<li>指针指向一个已删除的对象访问内存区域时，会出现野指针崩溃。野指针问题是需要我们重点关注的，因为它是导致App崩溃的最常见，也是最难定位的一种情况</li>
+</ul>
 </li>
 <li>被系统强杀等</li>
 </ol>
-<p>程序崩溃，对用户 公司的损害是很大的，任何一家公司都很重视产品的崩溃率，并会将崩溃率作为优先级最高的技术指标去衡量一个App的高可用性<br>而崩溃率等技术指标，一般都是由崩溃监控系统来搜集。同时，崩溃监控系统收集到的堆栈信<br>息，也为解决崩溃问题提供了最重要的信息<br>但是，崩溃信息的收集却并没有那么简单。因为，有些崩溃日志是可以通过信号捕获到的，而很<br>多崩溃日志却是通过信号捕获不到的</p>
-<p>KVO问题、NSNotification 线程问题、数组越界、野指针等崩溃<br>信息，是可以通过信号捕获的。但是，像后台任务超时、内存被打爆、主线程卡顿超阈值等信<br>息，是无法通过信号捕捉到的<br>但是，只有捕获到所有崩溃的情况，我们才能实现崩溃的全面监控。也就是说，只有先发现了问<br>题，然后才能够分析问题，最后解决问题</p>
+<p>程序崩溃，对用户 公司的损害是很大的，任何一家公司都很重视产品的崩溃率，并会将崩溃率作为优先级最高的技术指标去衡量一个App的高可用性,而崩溃率等技术指标，一般都是由崩溃监控系统来搜集。同时，崩溃监控系统收集到的堆栈信息，也为解决崩溃问题提供了最重要的信息<br>但是，崩溃信息的收集却并没有那么简单。因为，有些崩溃日志是可以通过信号捕获到的，而很多崩溃日志却是通过信号捕获不到的</p>
+<p>KVO问题、NSNotification 线程问题、数组越界、野指针等崩溃信息，是可以通过信号捕获的。但是，像后台任务超时、内存被打爆、主线程卡顿超阈值等信息，是无法通过信号捕捉到的<br>但是，只有捕获到所有崩溃的情况，我们才能实现崩溃的全面监控。也就是说，只有先发现了问题，然后才能够分析问题，最后解决问题</p>
 <ul>
 <li>我们先来看看信号可捕获的崩溃日志收集</li>
 </ul>
-<p>收集崩溃日志最简单的方法，就是打开 Xcode 的菜单选择 Product -&gt; Archive。<br>然后，在提交时选上“Upload your app’s symbols to receive symbolicated reports from<br>Apple”，以后你就可以直接在 Xcode 的 Archive 里看到符号化后的崩溃日志了。<br>但是这种方法时效性比较差，所以可以使用过PLCrashReporter 这样的第三方开源库捕获崩溃日志，然后上传到自己服务器上进行整体监控的<br>没有服务端开发能力以及对数据不敏感也可以使用Bugly来监控崩溃</p>
+<p>收集崩溃日志最简单的方法，就是打开 Xcode 的菜单选择 Product -&gt; Archive。<br>然后，在提交时选上“Upload your app’s symbols to receive symbolicated reports from Apple”，以后你就可以直接在Xcode的Archive里看到符号化后的崩溃日志了。<br>但是这种方法时效性比较差，所以可以使用过PLCrashReporter这样的第三方开源库捕获崩溃日志，然后上传到自己服务器上进行整体监控的没有服务端开发能力以及对数据不敏感也可以使用Bugly来监控崩溃</p>
 <p>同时对于系统Crash而引起的程序异常退出，可以通过UncaughtExceptionHandler机制捕获；<br>也就是说在程序中catch以外的内容，被系统自带的错误处理而捕获。我们要做的就是用自定义的函数替代该ExceptionHandler即可。<br>这里主要有两个函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSGetUncaughtExceptionHandler() 得到现在系统自带处理Handler；得到它后，如果程序正常退出时用来回复系统原先设置</span><br><span class="line">NSSetUncaughtExceptionHandler() 红色设置自定义的函数</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="第三方插件如何检测崩溃"><a href="#第三方插件如何检测崩溃" class="headerlink" title="第三方插件如何检测崩溃"></a>第三方插件如何检测崩溃</h2><p>崩溃日志里总能看到EXC_BAD_ACCESS<br>EXC_BAD_ACCESS 这个异常会通过 SIGSEGV 信号发现有问题的线程。虽然信号的种<br>类有很多，但是都可以通过注册 signalHandler 来捕获到</p>
+<h2 id="第三方插件如何检测崩溃"><a href="#第三方插件如何检测崩溃" class="headerlink" title="第三方插件如何检测崩溃"></a>第三方插件如何检测崩溃</h2><p>崩溃日志里总能看到EXC_BAD_ACCESS<br>EXC_BAD_ACCESS 这个异常会通过 SIGSEGV 信号发现有问题的线程。虽然信号的种类有很多，但是都可以通过注册 signalHandler 来捕获到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">void InstallSignalHandler(void)</span><br><span class="line">&#123;</span><br><span class="line">    signal(SIGHUP, SignalExceptionHandler);</span><br><span class="line">    signal(SIGINT, SignalExceptionHandler);</span><br><span class="line">    signal(SIGQUIT, SignalExceptionHandler);</span><br><span class="line">    signal(SIGABRT, SignalExceptionHandler);</span><br><span class="line">    signal(SIGILL, SignalExceptionHandler);</span><br><span class="line">    signal(SIGSEGV, SignalExceptionHandler);</span><br><span class="line">    signal(SIGFPE, SignalExceptionHandler);</span><br><span class="line">    signal(SIGBUS, SignalExceptionHandler);</span><br><span class="line">    signal(SIGPIPE, SignalExceptionHandler);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void SignalExceptionHandler(int signal)</span><br><span class="line">&#123;</span><br><span class="line">    NSMutableString *mstr &#x3D; [[NSMutableString alloc] init];</span><br><span class="line">    </span><br><span class="line">    [mstr appendString:@&quot;Stack:\n&quot;];</span><br><span class="line">    </span><br><span class="line">    void* callstack[128];</span><br><span class="line">    </span><br><span class="line">    int i, frames &#x3D; backtrace(callstack, 128);</span><br><span class="line">    </span><br><span class="line">    char** strs &#x3D; backtrace_symbols(callstack, frames);</span><br><span class="line">    </span><br><span class="line">    for (i &#x3D; 0; i&lt;frames;i++)</span><br><span class="line">    &#123;</span><br><span class="line">         [mstr appendFormat:@&quot;%s\n&quot;, strs[i]];</span><br><span class="line">         </span><br><span class="line">    &#125;   &#x2F;&#x2F;[ saveCreash:mstr];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面这段代码对各种信号都进行了注册，捕获到异常信号后，在处理方法 SignalExceptionHandler里通过 backtrace_symbols 方法就能获取到当前的堆栈信息。堆栈信息可以先保存在本地，下次<br>启动时再上传到崩溃监控服务器就可以了。</p>
@@ -209,7 +209,7 @@
 <ul>
 <li>信号捕获不到的崩溃信息怎么收集？</li>
 </ul>
-<p>App 退到后台后，即使代码逻辑没有问题也很容易出现崩<br>溃。而且，这些崩溃往往是因为系统强制杀掉了某些进程导致的，而系统强杀抛出的信号还由于<br>系统限制无法被捕获到<br>一般，在退后台时你都会把关键业务数据保存在内存中，如果保存过程中出现了崩溃就会丢失或<br>损坏关键数据，进而数据损坏又会导致应用不可用。这种关键数据的损坏会给用户带来巨大的损<br>失</p>
+<p>App 退到后台后，即使代码逻辑没有问题也很容易出现崩溃。而且，这些崩溃往往是因为系统强制杀掉了某些进程导致的，而系统强杀抛出的信号还由于系统限制无法被捕获到<br>一般，在退后台时你都会把关键业务数据保存在内存中，如果保存过程中出现了崩溃就会丢失或损坏关键数据，进而数据损坏又会导致应用不可用。这种关键数据的损坏会给用户带来巨大的损失</p>
 <p>所以有如下问题：</p>
 <ol>
 <li>后台容易崩溃的原因</li>
@@ -247,8 +247,8 @@
 <blockquote>
 <p>Background Task</p>
 </blockquote>
-<p>程序退到后台 只有几秒钟的时间可以执行代码 接下来就会被系统挂起 进程挂起<br>后所有线程都会暂停，不管这个线程是文件读写还是内存读写都会被暂停.读写数据无法被暂停所以只能被中断，中断时数据读写异常而且容易损坏文件，所以系统会选择主动杀掉App进程</p>
-<p>而 Background Task 这种方式，就是系统提供了 beginBackgroundTaskWithExpirationHandler<br>方法来延长后台执行时间，可以解决你退后台后还需要一些时间去处理一些任务的诉求。<br>Background Task 方式的使用方法，如下</p>
+<p>程序退到后台 只有几秒钟的时间可以执行代码 接下来就会被系统挂起 进程挂起后所有线程都会暂停，不管这个线程是文件读写还是内存读写都会被暂停.读写数据无法被暂停所以只能被中断，中断时数据读写异常而且容易损坏文件，所以系统会选择主动杀掉App进程</p>
+<p>而 Background Task 这种方式，就是系统提供了beginBackgroundTaskWithExpirationHandler方法来延长后台执行时间，可以解决你退后台后还需要一些时间去处理一些任务的诉求。<br>Background Task 方式的使用方法，如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationDidEnterBackground:(UIApplication *)application &#123;</span><br><span class="line"></span><br><span class="line">    backgroundTaskIdentifier &#x3D; [application beginBackgroundTaskWithExpirationHandler:^&#123;</span><br><span class="line">        [self task];</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这段代码中task任务最多执行3分钟 3分钟内运行完成你的app就会挂起 如果没有完成就会强制杀掉从而造成崩溃，所以App退出后台容易崩溃</p>
@@ -258,8 +258,8 @@
 <h3 id="如何避免后台崩溃"><a href="#如何避免后台崩溃" class="headerlink" title="如何避免后台崩溃"></a>如何避免后台崩溃</h3><p>APP到后台之后如果执行时间过长就会导致被系统杀掉，所以我们要在读写操作上进行严格的控制，如判断数据大小等，在后台限制时间内或延长后台执行时间后也处理不完的话，我们可以在程序下次启动或者后台唤醒时在进行处理。<br>同时APP到后台之后，执行时间过长被系统杀掉的崩溃是无法通过信号捕捉到的</p>
 <h3 id="怎么去收集退后台后超过保活阈值而导致信号捕获不到的那些崩溃信息呢？"><a href="#怎么去收集退后台后超过保活阈值而导致信号捕获不到的那些崩溃信息呢？" class="headerlink" title="怎么去收集退后台后超过保活阈值而导致信号捕获不到的那些崩溃信息呢？"></a>怎么去收集退后台后超过保活阈值而导致信号捕获不到的那些崩溃信息呢？</h3><p>采用 Background Task 方式时 我们可以根据后台保活3分钟这个阈值设置一个定时器，看后台程序是否还在执行。如果还在执行那么我们就知道该程序即将后台崩溃，再次我们进行上报，记录已达到监控的目的。</p>
 <h3 id="还有哪些信号捕获不到的崩溃情况？怎样监控其他无法通过信号捕获的崩溃信息？"><a href="#还有哪些信号捕获不到的崩溃情况？怎样监控其他无法通过信号捕获的崩溃信息？" class="headerlink" title="还有哪些信号捕获不到的崩溃情况？怎样监控其他无法通过信号捕获的崩溃信息？"></a>还有哪些信号捕获不到的崩溃情况？怎样监控其他无法通过信号捕获的崩溃信息？</h3><p>主要的捕捉不到的崩溃情况就是内存打爆、主线程卡顿时间超过阈值被watchdog杀掉的情况</p>
-<p>这两种和监控后台崩溃类似，都是要找到他们的阈值，然后临近阈值还在执行，进行收集信息上报<br>如果卡顿阈值可以通过runloop 检测 一旦发现进入睡眠前的 kCFRunLoopBeforeSources 状态，或者唤醒后的状态<br>kCFRunLoopAfterWaiting，在设置的时间阀值内一直没有变化，即可判定为卡顿。接下来，我们<br>就可以 dump 出堆栈的信息，从而进一步分析出具体是哪个方法的执行时间过长</p>
-<p>对于内存打爆信息的收集，你可以采用内存映射（mmap）的方式来保存现场。主线程卡顿时间<br>超过阈值这种情况，你只要收集当前线程的堆栈信息就可以了</p>
+<p>这两种和监控后台崩溃类似，都是要找到他们的阈值，然后临近阈值还在执行，进行收集信息上报<br>如果卡顿阈值可以通过runloop 检测 一旦发现进入睡眠前的 kCFRunLoopBeforeSources 状态，<br>或者唤醒后的状态kCFRunLoopAfterWaiting，在设置的时间阀值内一直没有变化，即可判定为卡顿。<br>接下来，我们就可以 dump出堆栈的信息，从而进一步分析出具体是哪个方法的执行时间过长</p>
+<p>对于内存打爆信息的收集，你可以采用内存映射（mmap）的方式来保存现场。主线程卡顿时间超过阈值这种情况，你只要收集当前线程的堆栈信息就可以了</p>
 <h3 id="采集到崩溃信息后如何分析并解决崩溃问题呢？"><a href="#采集到崩溃信息后如何分析并解决崩溃问题呢？" class="headerlink" title="采集到崩溃信息后如何分析并解决崩溃问题呢？"></a>采集到崩溃信息后如何分析并解决崩溃问题呢？</h3><p>我们采集到的崩溃日志，主要包含的信息为：</p>
 <ol>
 <li>进程信息 崩溃进程的相关信息，比如崩溃报告唯一标识符、唯一键值、设备标识</li>
@@ -267,8 +267,8 @@
 <li>异常信息 异常类型、异常编码、异常的线程</li>
 <li>线程回溯 崩溃时的方法调用栈。</li>
 </ol>
-<p>通常情况下，我们分析崩溃日志时最先看的是异常信息，分析出问题的是哪个线程，在线程回溯<br>里找到那个线程；然后，分析方法调用栈，符号化后的方法调用栈可以完整地看到方法调用的过<br>程，从而知道问题发生在哪个方法的调用上。</p>
-<p>方法调用栈顶，就是最后导致崩溃的方法调用。完整的崩溃日志里，除了线程方法调用栈还有异<br>常编码。异常编码，就在异常信息里。</p>
+<p>通常情况下，我们分析崩溃日志时最先看的是异常信息，分析出问题的是哪个线程，在线程回溯里找到那个线程；<br>然后，分析方法调用栈，符号化后的方法调用栈可以完整地看到方法调用的过程，<br>从而知道问题发生在哪个方法的调用上。</p>
+<p>方法调用栈顶，就是最后导致崩溃的方法调用。完整的崩溃日志里，除了线程方法调用栈还有异常编码。异常编码，就在异常信息里。</p>
 <p>一些被系统杀掉的情况，我们可以通过异常编码来分析常见的就是如下三种:<br>0x8badf00d，表示 App 在一定时间内无响应而被 watchdog 杀掉的情况。<br>0xdeadfa11，表示 App 被用户强制退出。<br>0xc00010ff，表示 App 因为运行造成设备温度太高而被杀掉。</p>
 <p>0x8badf00d 这种情况是出现最多的。当出现被 watchdog 杀掉的情况时，我们就可以把范围控制在主线程被卡的情况</p>
 <p>0xdeadfa11 的情况，是用户的主动行为，我们不用太关注。</p>
@@ -392,11 +392,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/06/CrackQp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/01/desinImage/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          CrackQp 破解趣拍（持续更新。。）
+          设计
         
       </div>
     </a>
