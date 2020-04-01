@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 底层 | Edison‘s Blog</title>
+  <title>常用算法复习 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/%E5%BA%95%E5%B1%82/index.html">
+  <meta name="description" content="面试常用算法复习目录 八大排序算法 冒泡 选择 堆 插入 归并 快排   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序www.zhidao.baidu.com-com&#x2F;baidu&#x2F;zhidao&#x2F;www">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用算法复习">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="面试常用算法复习目录 八大排序算法 冒泡 选择 堆 插入 归并 快排   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序www.zhidao.baidu.com-com&#x2F;baidu&#x2F;zhidao&#x2F;www">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-01T02:23:00.000Z">
+<meta property="article:modified_time" content="2020-04-01T11:38:48.623Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
@@ -146,36 +153,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-面试常用算法复习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用算法复习
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-04-01T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面试常用算法复习"><a href="#面试常用算法复习" class="headerlink" title="面试常用算法复习"></a>面试常用算法复习</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#jump1">八大排序算法</a><ol>
+<li>冒泡</li>
+<li>选择</li>
+<li>堆</li>
+<li>插入</li>
+<li>归并</li>
+<li>快排</li>
+</ol>
+</li>
+<li><a href="#jump2">两个有序数组合并</a></li>
+<li><a href="#jump3">无序数组中位数</a></li>
+<li><a href="#jump4">字符串翻转</a></li>
+<li><a href="#jump5">翻转单链表</a></li>
+<li><a href="#jump6">字符串逆序www.zhidao.baidu.com-com/baidu/zhidao/www</a><a id="more"></a>
+</li>
+</ol>
+<hr>
+<h3 id="1-排序"><a href="#1-排序" class="headerlink" title="1. 排序"></a><span id="jump1">1. 排序</span></h3><hr>
+<h4 id="1-1-冒泡"><a href="#1-1-冒泡" class="headerlink" title="1.1 冒泡"></a>1.1 冒泡</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static void sort1(Integer[] arr)&#123;</span><br><span class="line">	for (int end &#x3D; arr.length -1 ;end &gt; 0 ;end-- )&#123;</span><br><span class="line">		for(int begin &#x3D; 1 ; begin &lt;&#x3D; end;begin++)&#123;</span><br><span class="line">			if (arr[begin] &lt; arr[begin -1]) &#123;</span><br><span class="line">				int temp &#x3D; arr[begin];</span><br><span class="line">				arr[begin] &#x3D; arr[begin - 1];</span><br><span class="line">				arr[begin - 1] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-选择"><a href="#1-2-选择" class="headerlink" title="1.2 选择"></a>1.2 选择</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static void sort2(Integer[] arr)&#123;</span><br><span class="line">	for (int end &#x3D; arr.length -1 ;end &gt; 0 ;end-- )&#123;</span><br><span class="line">		int maxIndex &#x3D; 0;</span><br><span class="line">		for(int begin &#x3D; 1 ; begin &lt;&#x3D; end;begin++)&#123;</span><br><span class="line">			if (arr[begin] &gt; arr[maxIndex]) &#123;</span><br><span class="line">				maxIndex &#x3D; begin;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int temp &#x3D; arr[end];</span><br><span class="line">		arr[end] &#x3D; arr[maxIndex];</span><br><span class="line">		arr[maxIndex] &#x3D; temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-堆"><a href="#1-3-堆" class="headerlink" title="1.3 堆"></a>1.3 堆</h4><p>原地建堆 堆顶和最后一个交换 下滤  再取堆顶交换最后一个 循环</p>
+<h4 id="1-4-插入"><a href="#1-4-插入" class="headerlink" title="1.4 插入"></a>1.4 插入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static void insertionSort(Integer[] arr)&#123;</span><br><span class="line">		for(int begin &#x3D; 1 ; begin &lt; arr.length; begin++)&#123;</span><br><span class="line">			int cur &#x3D; begin;</span><br><span class="line">			while (cur &gt; 0 &amp;&amp; (arr[cur-1] &gt; arr[cur])) &#123;</span><br><span class="line">				int temp &#x3D; arr[cur];</span><br><span class="line">				arr[cur] &#x3D; arr[cur-1];</span><br><span class="line">				arr[cur-1]&#x3D; temp;</span><br><span class="line">				cur--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		printArray(arr);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>利用二分查找优化插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">static void insertionSort2(Integer[] arr)&#123;</span><br><span class="line">	for (int begin &#x3D; 1; begin &lt; arr.length; begin++) &#123;</span><br><span class="line">		int v &#x3D; arr[begin];</span><br><span class="line">		int insearchIndex &#x3D; search(arr, begin);</span><br><span class="line">		&#x2F;&#x2F; 移动元素</span><br><span class="line">		for (int i &#x3D; begin; i &gt; insearchIndex; i--) &#123;</span><br><span class="line">			arr[i] &#x3D; arr[i-1] ;</span><br><span class="line">		&#125;</span><br><span class="line">		arr[insearchIndex] &#x3D; v;</span><br><span class="line">	&#125;</span><br><span class="line">	printArray(arr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int search(Integer[] arr,int index)&#123;</span><br><span class="line">	if (arr &#x3D;&#x3D; null || arr.length &#x3D;&#x3D; 0) &#123;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	int v &#x3D; arr[index];</span><br><span class="line">	int begin &#x3D; 0;</span><br><span class="line">	int end &#x3D; index;</span><br><span class="line">	while (begin &lt; end) &#123;</span><br><span class="line">		int mid &#x3D; (begin + end) &gt;&gt; 1;</span><br><span class="line">		if (v &lt; arr[mid]) &#123;</span><br><span class="line">			end &#x3D; mid;</span><br><span class="line">		&#125;else if (v &gt;&#x3D; arr[mid]) &#123;</span><br><span class="line">			begin &#x3D; mid + 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return begin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5归并"><a href="#1-5归并" class="headerlink" title="1.5归并"></a>1.5归并</h4><p>递归 拆分 有序数组合并 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">static void mergeSort()&#123;</span><br><span class="line">  leftArray &#x3D;  new Integer[array.length&gt;&gt;1];</span><br><span class="line">	sort(0, array.length);</span><br><span class="line">	printArray(array);</span><br><span class="line">&#125;</span><br><span class="line">static void sort(int begin , int end)&#123;</span><br><span class="line">	if (end - begin &lt; 2) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int mid &#x3D; (begin + end)&gt;&gt;1;</span><br><span class="line">	sort(begin, mid);</span><br><span class="line">	sort(mid, end);</span><br><span class="line">	merge(begin, mid, end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void merge(int begin,int mid,int end)&#123;</span><br><span class="line">	int li &#x3D; 0 ,le &#x3D; mid - begin;</span><br><span class="line">	int ri &#x3D; mid,re &#x3D; end;</span><br><span class="line">	int ai &#x3D; begin;</span><br><span class="line">	</span><br><span class="line">	for (int i &#x3D; li ; i &lt; le; i++) &#123;</span><br><span class="line">		leftArray[i] &#x3D; array[begin + i];</span><br><span class="line">	&#125;</span><br><span class="line">	while (li &lt; le) &#123;</span><br><span class="line">		if ( (ri &lt; re) &amp;&amp; leftArray[li] &gt; array[ri]) &#123;</span><br><span class="line">			array[ai++] &#x3D; array[ri++];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			array[ai++] &#x3D; leftArray[li++];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6-快排"><a href="#1-6-快排" class="headerlink" title="1.6 快排"></a>1.6 快排</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; [)</span><br><span class="line">static void quickSort(int begin,int end)&#123;</span><br><span class="line">	if (end - begin &lt; 2) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F; 确定轴点位置</span><br><span class="line">	int mid &#x3D; pivotIndex(begin, end);</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;堆子序列快排</span><br><span class="line">	quickSort(begin, mid);</span><br><span class="line">	quickSort(mid + 1, end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 构造出范围内的轴点元素</span><br><span class="line">static int pivotIndex(int begin,int end)&#123;</span><br><span class="line">	int pivot &#x3D; array[begin];</span><br><span class="line">	end--; &#x2F;&#x2F; 指向最后一个元素</span><br><span class="line">	while (begin &lt; end) &#123;</span><br><span class="line">		while (begin &lt; end) &#123;</span><br><span class="line">			if (pivot &lt; array[end]) &#123;&#x2F;&#x2F; 右边元素大于轴点end往前移动元素不动</span><br><span class="line">				end--;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				array[begin++] &#x3D; array[end];</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		while (begin &lt; end) &#123;</span><br><span class="line">			if (pivot &gt; array[begin]) &#123;&#x2F;&#x2F; 左边元素小于轴点元素不动</span><br><span class="line">				begin++;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				array[end--] &#x3D; array[begin];&#x2F;&#x2F; 左边元素大于轴点元素 移动到轴点右侧</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F; 将轴点元素放入最终位置</span><br><span class="line">	array[begin] &#x3D; pivot;</span><br><span class="line">	</span><br><span class="line">	return begin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-两个有序数组合并"><a href="#2-两个有序数组合并" class="headerlink" title="2. 两个有序数组合并"></a><span id="jump2">2. 两个有序数组合并</span></h3><p>两个指针分别扫描 命中就++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">static void test2(Integer[] data1,Integer[] data2)&#123;</span><br><span class="line">	int p &#x3D; 0;</span><br><span class="line">	int q &#x3D; 0;</span><br><span class="line">	List&lt;Integer&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	while (p &lt; data1.length-1 &amp;&amp; q &lt; data2.length) &#123;</span><br><span class="line">		if (data1[p] &lt;&#x3D; data2[q] ) &#123;</span><br><span class="line">			list.add(data1[p++]);</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			list.add(data2[q++]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	while (p &lt; data1.length-1) &#123;</span><br><span class="line">        list.add(data1[p]);</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    while (q &lt; data2.length-1) &#123;</span><br><span class="line">    	    list.add(data2[q]);</span><br><span class="line">        q++;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	System.out.print(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="3-无序数组中位数"><a href="#3-无序数组中位数" class="headerlink" title="3. 无序数组中位数"></a><span id="jump3">3. 无序数组中位数</span></h3><p>利用堆 奇数用(size+1 )/ 2 偶数size/2建堆 然后不断的比较堆顶和剩余元素  类似于topk</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 无序数组中位数</span><br><span class="line">static void test1()&#123;</span><br><span class="line">	PriorityQueue&lt;Integer&gt; heap &#x3D; new PriorityQueue&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	Integer[] data &#x3D;  &#123;12,3,10,8,6,7,11,13,9&#125;;</span><br><span class="line">	</span><br><span class="line">	int size &#x3D; (data.length + 1) &#x2F; 2;</span><br><span class="line">	for (int i &#x3D; 0; i &lt; size; i++) &#123;</span><br><span class="line">		heap.offer(data[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for (int i &#x3D; size; i &lt; data.length; i++) &#123;</span><br><span class="line">		if (heap.peek() &lt; data[i]) &#123;</span><br><span class="line">			heap.poll();</span><br><span class="line">			heap.offer(data[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="4-字符串翻转"><a href="#4-字符串翻转" class="headerlink" title="4. 字符串翻转"></a><span id="jump4">4. 字符串翻转</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 字符串反转</span><br><span class="line">void char_reverse(char *cha)</span><br><span class="line">&#123;</span><br><span class="line">    char *begin &#x3D; cha;</span><br><span class="line">    char *end &#x3D; cha + strlen(cha) - 1;</span><br><span class="line">    while (begin &lt; end) &#123;</span><br><span class="line">        char temp &#x3D; *begin;</span><br><span class="line">        *(begin++) &#x3D; *end;</span><br><span class="line">        *(end--) &#x3D; temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="5-单链表翻转"><a href="#5-单链表翻转" class="headerlink" title="5. 单链表翻转"></a><span id="jump5">5. 单链表翻转</span></h3><p>头插</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void reverseList(ListNode head) &#123;</span><br><span class="line">		if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">        ListNode newHead &#x3D; null;</span><br><span class="line">        while (head!&#x3D;null) &#123;</span><br><span class="line">			ListNode tmp &#x3D; head.next;</span><br><span class="line">			head.next &#x3D; newHead;</span><br><span class="line">			newHead &#x3D; head;</span><br><span class="line">			head &#x3D; tmp;</span><br><span class="line">		&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="6-字符串逆序www-zhidao-baidu-com-com-baidu-zhidao-www"><a href="#6-字符串逆序www-zhidao-baidu-com-com-baidu-zhidao-www" class="headerlink" title="6. 字符串逆序www.zhidao.baidu.com-com/baidu/zhidao/www"></a><span id="jump6">6. 字符串逆序<a href="http://www.zhidao.baidu.com-com/baidu/zhidao/www" target="_blank" rel="noopener">www.zhidao.baidu.com-com/baidu/zhidao/www</a></span></h3><p>两次逆序排列 oc写起来简单点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">NSString *str &#x3D; @&quot;www.zhidao.baidu.com&quot;;</span><br><span class="line">       </span><br><span class="line">NSArray *array &#x3D; [str componentsSeparatedByString:@&quot;.&quot;];</span><br><span class="line">       </span><br><span class="line">NSEnumerator *enumerator &#x3D;[array reverseObjectEnumerator];</span><br><span class="line">       </span><br><span class="line">NSArray *resultArr &#x3D; [enumerator allObjects];</span><br><span class="line">       </span><br><span class="line">NSString *resultStr &#x3D; [resultArr componentsJoinedByString:@&quot;&#x2F;&quot;];</span><br><span class="line">       </span><br><span class="line">NSLog(@&quot;%@&quot;,resultStr);</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/runtime4/" class="archive-article-date">
-  	<time datetime="2018-07-26T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/runtime4/">Runtime(四)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,167 +258,116 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/runtime-3/" class="archive-article-date">
-  	<time datetime="2018-07-23T17:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/06/CrackQp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CrackQp 破解趣拍（持续更新。。）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/runtime-3/">Runtime(三)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/runtime-2/" class="archive-article-date">
-  	<time datetime="2018-07-23T16:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/runtime-2/">Runtime(二)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/23/runtime-1/" class="archive-article-date">
-  	<time datetime="2018-07-23T15:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/runtime-1/">Runtime(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -368,9 +390,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
