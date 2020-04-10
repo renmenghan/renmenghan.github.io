@@ -168,6 +168,124 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-runloop监控卡顿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/runloop%E7%9B%91%E6%8E%A7%E5%8D%A1%E9%A1%BF/">如何利用runloop原理监控卡顿</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/runloop%E7%9B%91%E6%8E%A7%E5%8D%A1%E9%A1%BF/" class="archive-article-date">
+  	<time datetime="2020-04-10T06:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="导致卡顿的原因："><a href="#导致卡顿的原因：" class="headerlink" title="导致卡顿的原因："></a>导致卡顿的原因：</h3><ol>
+<li>复杂UI，图文混排的绘制量过大</li>
+<li>在主线程上做网络同步请求</li>
+<li>在主线程做大量的IO操作</li>
+<li>运算量过大，CPU持续高占有</li>
+<li>死锁和主子线程抢锁</li>
+</ol>
+<h3 id="如何监控到什么时候会出现卡顿"><a href="#如何监控到什么时候会出现卡顿" class="headerlink" title="如何监控到什么时候会出现卡顿"></a>如何监控到什么时候会出现卡顿</h3><p>监控FPS<br>FPS是1秒显示的帧数 按照每秒60帧满帧算的话 其实不满60也不会造成卡顿的效果 肉眼看起来是连贯的 所以单纯的通过监视FPS很难确定是否会出现卡顿</p>
+<p>RunLoop原理<br>对于iOS开发者来说，监控卡顿就是要看主线程做了哪些事，因为线程间的消息是通过runloop的所以就可以从NSRunloop入手，就可以知道主线程调用了哪些方法，我们通过监听NSRunLoop的状态，就能够发现调用方法是否执行时间过长，从而判断出是否会出现卡顿。<br>所以可以通过监控runloop状态来判断是否会出现卡顿</p>
+<p>RunLoop这个对象在iOS里由CFRunloop实现，简单来说RunLoop是用来监听输入源的<br>进行调度处理的。这里的输入源可以是输入设备、网络、周期性、或者延迟时间、异步回调。RunLoop会接受两种类型的输入源：一种是来自另一个线程或者来自不同应用的异步消息；另一种是来自预定时间或者重复时间间隔的时间。</p>
+<p>RunLoop的目的是当有事件要去处理时保持线程忙，当没有事件要处理时让线程进入休眠。所以runloop不光能运用到监控卡顿，还可以提高用户的交互体验。通过将那些繁重而不紧急会大量占用CPU的任务（如图片加载）放在空闲的Runloop模式里执行。这样就可以避开在trackingMode这个runloop模式时执行<br>避免在trackmode模式执行繁重的cpu任务，就能避免影响用户交互操作上体验</p>
+<p>RunLoop原理</p>
+<ol>
+<li>通知 observers：RunLoop 要开始进入 loop 了。紧接着就进入 loop。</li>
+<li>开启一个 do while 来保活线程。通知 Observers：RunLoop 会触发 Timer 回调、Source0 回调，接着执行加入的 block。接下来，触发 Source0 回调，如果有 Source1 是 ready 的状态的话，就会跳转到 handle_msg 去处理消息。</li>
+<li>回调触发后，通知 Observers：RunLoop 的线程将进入休眠（sleep）状态。</li>
+<li>进入休眠后，会等待 mach_port 的消息，以再次唤醒。只有在下面四个事件出现时才会被再次唤醒：<ol>
+<li>基于 port 的 Source 事件；</li>
+<li>Timer 时间到；</li>
+<li>RunLoop 超时；</li>
+<li>被调用者唤醒。</li>
+</ol>
+</li>
+<li>唤醒时通知 Observer：RunLoop 的线程刚刚被唤醒了</li>
+<li>RunLoop 被唤醒后就要开始处理消息了</li>
+<li>根据当前 RunLoop 的状态来判断是否需要走下一个 loop。当被外部强制停止或 loop 超时时，就不继续下一个 loop 了，否则继续走下一个 loop 。</li>
+</ol>
+<p>loop的6个状态<br>kCFRunLoopEntry<br>kCFRunLoopBeforeTimers<br>kCFRunLoopBeforeSources<br>kCFRunLoopBeforeWaiting<br>kCFRunLoopAfterWaiting<br>kCFRunLoopExit<br>kCFRunLoopAllActivities</p>
+<p>如果runloop的线程，进入睡眠前的方法执行时间过长而导致无法进入睡眠，或者线程唤醒后接收消息时间过长而无法进入下一步的话，就可以认为是线程受阻了，如果是主线程的话表现出来的就是卡顿<br>所以我们要关注的两个阶段就是睡眠之前和唤醒之后是 kCFRunLoopBeforeSources<br>kCFRunLoopAfterWaiting也就是要触发source0回调和接收mach_port消息两个状态</p>
+<h3 id="如何检查卡顿"><a href="#如何检查卡顿" class="headerlink" title="如何检查卡顿"></a>如何检查卡顿</h3><p>创建一个observer添加到主线程的runloop common模式下 然后创建一个持续的子线程专门用来监控主线程的runloop状态，一旦发现进入睡眠前或者唤醒后的状态，在设置的时间阀值内一直没有变化，即可判定为卡顿。接下来我们就可以dump出堆栈的信息，从而进一步分析出具体哪个方法的执行时间过长。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CFRunLoopObserverContext context &#x3D; &#123;0,(__bridge void*)self,NULL,NULL&#125;;</span><br><span class="line">CFRunLoopObserverRef runLoopObserver &#x3D; CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, 0, observeRunLoopActicities, &amp;context);</span><br><span class="line"></span><br><span class="line">CFRunLoopAddObserver(CFRunLoopGetMain(), runLoopObserver, kCFRunLoopCommonModes);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">      while (YES) &#123;</span><br><span class="line">          long semaphoreWait&#x3D; dispatch_semaphore_wait(dispatchSemaphore, dispatch_time(DISPATCH_TIME_NOW, 30*NSEC_PER_MSEC));</span><br><span class="line">          if (semaphoreWait !&#x3D; 0) &#123;</span><br><span class="line">              if (!runLoopObserver) &#123;</span><br><span class="line">                  timeoutCount &#x3D; 0;</span><br><span class="line">                  dispatchSemaphore &#x3D; 0;</span><br><span class="line">                  runLoopActivity &#x3D; 0;</span><br><span class="line">                  return;</span><br><span class="line">          &#125;</span><br><span class="line">              &#x2F;&#x2F;两个runloop的状态，BeforeSources和AfterWaiting这两个状态区间时间能够检测到是否卡顿</span><br><span class="line">              if (runLoopActivity &#x3D;&#x3D; kCFRunLoopBeforeSources || runLoopActivity &#x3D;&#x3D; kCFRunLoopAfterWaiting)&#123;</span><br><span class="line">                  &#x2F;&#x2F; 堆栈信息上报服务器</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;&#x2F;&#x2F; end semaphore wait</span><br><span class="line">          timeoutCount &#x3D; 0;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p> NSEC_PER_SEC 代表的是触发卡顿的阀值单位是秒 触发卡顿的时间阀值可以根据watchdog的机制来设置WatchDog 在不同状态下设置的不同时间：<br>启动（Launch）：20s；<br>恢复（Resume）：10s；<br>挂起（Suspend）：10s；<br>退出（Quit）：6s；<br>后台（Background）：3min（在 iOS 7 之前，每次申请 10min； 之后改为每次申请 3min，可连续申请，最多申请到 10min）</p>
+<p>可以适当的减少阀值，原则就是有限解决感知上的最明显的体验问题</p>
+<p>如何获取卡顿的方法堆栈<br>可以直接去调用系统函数 但是只能获取简单的信息<br>直接用PLCrashReporter这个开源第三方库来获取堆栈信息能够定位到问题代码的位置</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/10/runloop%E7%9B%91%E6%8E%A7%E5%8D%A1%E9%A1%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-面试常用算法复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -999,91 +1117,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-异步绘制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/">异步绘制</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2018-06-26T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、UIView如何显示内容"><a href="#一、UIView如何显示内容" class="headerlink" title="一、UIView如何显示内容"></a>一、UIView如何显示内容</h3><p>当我们操作UI时，例如改变frame、更新UIView/CALayer，或者自己去调用setNeedsLayout/setNeedsDisplay方法，UIView会调用-[CALayer setNeedsLayout]/-[CALayer setNeedsDisplay]方法，给layer上打上一个脏标记，意味着需要重绘。但是只有在下一次runloop即将结束的时候才会调用[CALayer display],而这个方法会判断是否实现了displayLayer这个方法，如果没有实现，那么走系统<br>调用</p>
-<p><img src="/photos/interview/16d6628854c7bc64.jpeg" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1201,19 +1234,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">runtime</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">底层</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Crash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">runtime</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">底层</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,11 +1258,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">埋点</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">埋点</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
