@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>如何利用runloop原理监控卡顿 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="导致卡顿的原因： 复杂UI，图文混排的绘制量过大 在主线程上做网络同步请求 在主线程做大量的IO操作 运算量过大，CPU持续高占有 死锁和主子线程抢锁  如何监控到什么时候会出现卡顿监控FPSFPS是1秒显示的帧数 按照每秒60帧满帧算的话 其实不满60也不会造成卡顿的效果 肉眼看起来是连贯的 所以单纯的通过监视FPS很难确定是否会出现卡顿 RunLoop原理对于iOS开发者来说，监控卡顿就是要看">
+  <meta name="description" content="导致卡顿的原因： 复杂UI，图文混排的绘制量过大 在主线程上做网络同步请求 在主线程做大量的IO操作 运算量过大，CPU持续高占有 死锁和主子线程抢锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何利用runloop原理监控卡顿">
 <meta property="og:url" content="http://yoursite.com/2020/04/10/runloop%E7%9B%91%E6%8E%A7%E5%8D%A1%E9%A1%BF/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
-<meta property="og:description" content="导致卡顿的原因： 复杂UI，图文混排的绘制量过大 在主线程上做网络同步请求 在主线程做大量的IO操作 运算量过大，CPU持续高占有 死锁和主子线程抢锁  如何监控到什么时候会出现卡顿监控FPSFPS是1秒显示的帧数 按照每秒60帧满帧算的话 其实不满60也不会造成卡顿的效果 肉眼看起来是连贯的 所以单纯的通过监视FPS很难确定是否会出现卡顿 RunLoop原理对于iOS开发者来说，监控卡顿就是要看">
+<meta property="og:description" content="导致卡顿的原因： 复杂UI，图文混排的绘制量过大 在主线程上做网络同步请求 在主线程做大量的IO操作 运算量过大，CPU持续高占有 死锁和主子线程抢锁">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-10T06:35:00.000Z">
-<meta property="article:modified_time" content="2020-04-10T07:43:50.191Z">
+<meta property="article:modified_time" content="2020-04-10T07:47:08.106Z">
 <meta property="article:author" content="edison">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="面试">
@@ -198,9 +198,9 @@ var _hmt = _hmt || [];
 <li>在主线程上做网络同步请求</li>
 <li>在主线程做大量的IO操作</li>
 <li>运算量过大，CPU持续高占有</li>
-<li>死锁和主子线程抢锁</li>
+<li>死锁和主子线程抢锁<a id="more"></a>
+<h3 id="如何监控到什么时候会出现卡顿"><a href="#如何监控到什么时候会出现卡顿" class="headerlink" title="如何监控到什么时候会出现卡顿"></a>如何监控到什么时候会出现卡顿</h3>监控FPS<br>FPS是1秒显示的帧数 按照每秒60帧满帧算的话 其实不满60也不会造成卡顿的效果 肉眼看起来是连贯的 所以单纯的通过监视FPS很难确定是否会出现卡顿</li>
 </ol>
-<h3 id="如何监控到什么时候会出现卡顿"><a href="#如何监控到什么时候会出现卡顿" class="headerlink" title="如何监控到什么时候会出现卡顿"></a>如何监控到什么时候会出现卡顿</h3><p>监控FPS<br>FPS是1秒显示的帧数 按照每秒60帧满帧算的话 其实不满60也不会造成卡顿的效果 肉眼看起来是连贯的 所以单纯的通过监视FPS很难确定是否会出现卡顿</p>
 <p>RunLoop原理<br>对于iOS开发者来说，监控卡顿就是要看主线程做了哪些事，因为线程间的消息是通过runloop的所以就可以从NSRunloop入手，就可以知道主线程调用了哪些方法，我们通过监听NSRunLoop的状态，就能够发现调用方法是否执行时间过长，从而判断出是否会出现卡顿。<br>所以可以通过监控runloop状态来判断是否会出现卡顿</p>
 <p>RunLoop这个对象在iOS里由CFRunloop实现，简单来说RunLoop是用来监听输入源的<br>进行调度处理的。这里的输入源可以是输入设备、网络、周期性、或者延迟时间、异步回调。RunLoop会接受两种类型的输入源：一种是来自另一个线程或者来自不同应用的异步消息；另一种是来自预定时间或者重复时间间隔的时间。</p>
 <p>RunLoop的目的是当有事件要去处理时保持线程忙，当没有事件要处理时让线程进入休眠。所以runloop不光能运用到监控卡顿，还可以提高用户的交互体验。通过将那些繁重而不紧急会大量占用CPU的任务（如图片加载）放在空闲的Runloop模式里执行。这样就可以避开在trackingMode这个runloop模式时执行<br>避免在trackmode模式执行繁重的cpu任务，就能避免影响用户交互操作上体验</p>
