@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: iOS | Edison‘s Blog</title>
+  <title>设计模式 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/iOS/page/2/index.html">
+  <meta name="description" content="六大设计原则 开闭原则 （对修改关闭，对扩展开放） 单一原则   （一个类只做一件事情如iOS中UIView与CALayer之间关系） 接口隔离原则 （每个接口做专门的事情不会根据入参来实现多种任务，使用多个专门协议，而不是一个庞大臃肿的协议如iOS的tableview协议 ） 依赖倒置原则 （抽象不应该依赖于具体，具体实现可以依赖于抽象） 里式替换原则 （父类可以被子类替换，且原有功能不变如KV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="六大设计原则 开闭原则 （对修改关闭，对扩展开放） 单一原则   （一个类只做一件事情如iOS中UIView与CALayer之间关系） 接口隔离原则 （每个接口做专门的事情不会根据入参来实现多种任务，使用多个专门协议，而不是一个庞大臃肿的协议如iOS的tableview协议 ） 依赖倒置原则 （抽象不应该依赖于具体，具体实现可以依赖于抽象） 里式替换原则 （父类可以被子类替换，且原有功能不变如KV">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-23T15:28:00.000Z">
+<meta property="article:modified_time" content="2020-04-17T05:51:06.465Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="架构">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
@@ -166,128 +174,113 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-设计模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式
+    </h1>
+  
+
+        
+        <a href="/2019/07/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2019-07-23T15:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h2><ol>
+<li>开闭原则 （对修改关闭，对扩展开放）</li>
+<li>单一原则   （一个类只做一件事情如iOS中UIView与CALayer之间关系）</li>
+<li>接口隔离原则 （每个接口做专门的事情不会根据入参来实现多种任务，使用多个专门协议，而不是一个庞大臃肿的协议如iOS的tableview协议 ）</li>
+<li>依赖倒置原则 （抽象不应该依赖于具体，具体实现可以依赖于抽象）</li>
+<li>里式替换原则 （父类可以被子类替换，且原有功能不变如KVO）</li>
+<li>迪米特法则 （一个对象应当对其他对象尽可能的少了解，高内聚低耦合）</li>
+</ol>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ol>
+<li>责任链</li>
+<li>桥接</li>
+<li>适配器</li>
+<li>单例</li>
+<li>命令模式</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="责任链"><a href="#责任链" class="headerlink" title="责任链"></a>责任链</h3><p>责任链为了解决需求变更问题<br>如业务ABC有如此依赖关系 A-&gt;B-&gt;C<br>如果某天需要改变依赖关系为C-&gt;B-&gt;A</p>
+<p>责任链的设计理念为一个类中包含相同的类对象为下一响应者如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@class BusinessObject;</span><br><span class="line">typedef void(^CompletionBlock)(BOOL handled);</span><br><span class="line">typedef void(^ResultBlock)(BusinessObject *handler, BOOL handled);</span><br><span class="line"></span><br><span class="line">@interface BusinessObject : NSObject</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 下一个响应者(响应链构成的关键)</span><br><span class="line">@property (nonatomic, strong) BusinessObject *nextBusiness;</span><br><span class="line">&#x2F;&#x2F; 响应者的处理方法</span><br><span class="line">- (void)handle:(ResultBlock)result;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 各个业务在该方法当中做实际业务处理</span><br><span class="line">- (void)handleBusiness:(CompletionBlock)completion;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@implementation BusinessObject</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 责任链入口方法</span><br><span class="line">- (void)handle:(ResultBlock)result</span><br><span class="line">&#123;</span><br><span class="line">    CompletionBlock completion &#x3D; ^(BOOL handled)&#123;</span><br><span class="line">        &#x2F;&#x2F; 当前业务处理掉了，上抛结果</span><br><span class="line">        if (handled) &#123;</span><br><span class="line">            result(self, handled);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            &#x2F;&#x2F; 沿着责任链，指派给下一个业务处理</span><br><span class="line">            if (self.nextBusiness) &#123;</span><br><span class="line">                [self.nextBusiness handle:result];</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                &#x2F;&#x2F; 没有业务处理, 上抛</span><br><span class="line">                result(nil, NO);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 当前业务进行处理</span><br><span class="line">    [self handleBusiness:completion];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)handleBusiness:(CompletionBlock)completion</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     业务逻辑处理</span><br><span class="line">     如网络请求、本地照片查询等</span><br><span class="line">     *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时我们可以通过nextBusiness来设置下一响应者<br>如修改为C-&gt;B-&gt;A 则设置BusinessC-&gt;BusinessB-&gt;BusinessA-&gt;nil即可解决需求变更问题</p>
+<h3 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h3><p>一个关于业务解耦的问题<br>如一个列表可能有三组数据源并存由后端来控制需要分别切换<br>我们可以设计一个抽象类A一个抽象类B 抽象类A包含抽象类B<br>抽象类A的子类A1 A2 A3,抽象类B的子类 B1 B2 B3<br>列表VC可以看做是A的具体子类就是A1 A2 A3中的一个<br>对应的列表可以看做是B的子类B1,B2,B3 在B1,B2,B3中进行不同接口的请求获取不同的数据<br>如此可以根据实际业务判断具体使用哪套数据<br> A1-&gt; B1,B2,B3;<br> A2-&gt; B1,B2,B3;<br> A3-&gt; B1,B2,B3;</p>
+<p>最终 ClassA中是抽象类型B不知道是B的哪个子类也就解除了耦合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Class A .h</span><br><span class="line">@interface BaseObjectA : NSObject</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 桥接模式的核心实现</span><br><span class="line">@property (nonatomic, strong) BaseObjectB *objB;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取数据</span><br><span class="line">- (void)handle;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Class .m</span><br><span class="line"></span><br><span class="line">- (void)handle</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; override to subclass</span><br><span class="line">    </span><br><span class="line">    [self.objB fetchData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 子类A1 .m</span><br><span class="line"></span><br><span class="line">- (void)handle</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; before 业务逻辑操作</span><br><span class="line">    </span><br><span class="line">    [super handle];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; after 业务逻辑操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Class B .h</span><br><span class="line">@interface BaseObjectB : NSObject</span><br><span class="line"></span><br><span class="line">- (void)fetchData;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Class B .m</span><br><span class="line">- (void)fetchData</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; override to subclass</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 子类B1 。m</span><br><span class="line">- (void)fetchData&#123;</span><br><span class="line">    &#x2F;&#x2F; 具体的逻辑处理  如处理一些不同的网络请求 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@interface BridgeDemo()</span><br><span class="line">@property (nonatomic, strong) BaseObjectA *objA;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation BridgeDemo</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line"> 根据实际业务判断使用那套具体数据</span><br><span class="line"> A1 --&gt; B1、B2、B3         3种</span><br><span class="line"> A2 --&gt; B1、B2、B3         3种</span><br><span class="line"> A3 --&gt; B1、B2、B3         3种</span><br><span class="line"> *&#x2F;</span><br><span class="line">- (void)fetch</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 创建一个具体的ClassA</span><br><span class="line">    _objA &#x3D; [[ObjectA1 alloc] init];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 创建一个具体的ClassB</span><br><span class="line">    BaseObjectB *b1 &#x3D; [[ObjectB1 alloc] init];</span><br><span class="line">    &#x2F;&#x2F; 将一个具体的ClassB1 指定给抽象的ClassB</span><br><span class="line">    _objA.objB &#x3D; b1;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 获取数据</span><br><span class="line">    [_objA handle];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><p>一个现有类需要适应变化的问题<br>如项目中有一个时间很久的类长时间不动相对稳定如直接修改则会带来相对的风险<br>对象适配器设计类构成<br>适配对象–成员变量-&gt;被适配对象<br>也就是创建一个适配对象 把被适配对象作为属性如request为适配方法则在方法内插入适配逻辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">被适配对象 </span><br><span class="line">@interface Target : NSObject</span><br><span class="line"></span><br><span class="line">- (void)operation;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">适配对象 。h</span><br><span class="line">&#x2F;&#x2F; 被适配对象</span><br><span class="line">@property (nonatomic, strong) Target *target;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 对原有方法包装</span><br><span class="line">- (void)request;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.m</span><br><span class="line">- (void)request</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 额外处理</span><br><span class="line">    </span><br><span class="line">    [self.target operation];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 额外处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>行为参数化来降低代码重合度<br>如有的app很多页面都需要相同的操作</p>
+<p>设计思想主要为两个类一个命令管理类一个命令类<br>把操作都定义为命令，然后用命令类去分发调度这些命令</p>
+<p>命令类如下：Command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef void(^CommandCompletionCallBack)(Command* cmd);</span><br><span class="line"></span><br><span class="line">@interface Command : NSObject</span><br><span class="line">@property (nonatomic, copy) CommandCompletionCallBack completion;</span><br><span class="line"></span><br><span class="line">- (void)execute;</span><br><span class="line">- (void)cancel;</span><br><span class="line"></span><br><span class="line">- (void)done;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (void)execute&#123;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;override to subclass;</span><br><span class="line">    </span><br><span class="line">    [self done];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)cancel&#123;</span><br><span class="line">    </span><br><span class="line">    self.completion &#x3D; nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)done</span><br><span class="line">&#123;</span><br><span class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        </span><br><span class="line">        if (_completion) &#123;</span><br><span class="line">            _completion(self);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;释放</span><br><span class="line">        self.completion &#x3D; nil;</span><br><span class="line">        </span><br><span class="line">        [[CommandManager sharedInstance].arrayCommands removeObject:self];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>命令管理者：CommandManager</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">@implementation CommandManager</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 命令管理者以单例方式呈现</span><br><span class="line">+ (instancetype)sharedInstance</span><br><span class="line">&#123;</span><br><span class="line">    static CommandManager *instance &#x3D; nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        instance &#x3D; [[super allocWithZone:NULL] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (id)allocWithZone:(struct _NSZone *)zone&#123;</span><br><span class="line">    return [self sharedInstance];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (id)copyWithZone:(nullable NSZone *)zone&#123;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 初始化方法</span><br><span class="line">- (id)init</span><br><span class="line">&#123;</span><br><span class="line">    self &#x3D; [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        &#x2F;&#x2F; 初始化命令容器</span><br><span class="line">        _arrayCommands &#x3D; [NSMutableArray array];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (void)executeCommand:(Command *)cmd completion:(CommandCompletionCallBack)completion</span><br><span class="line">&#123;</span><br><span class="line">    if (cmd) &#123;</span><br><span class="line">        &#x2F;&#x2F; 如果命令正在执行不做处理，否则添加并执行命令</span><br><span class="line">        if (![self _isExecutingCommand:cmd]) &#123;</span><br><span class="line">            &#x2F;&#x2F; 添加到命令容器当中</span><br><span class="line">            [[[self sharedInstance] arrayCommands] addObject:cmd];</span><br><span class="line">            &#x2F;&#x2F; 设置命令执行完成的回调</span><br><span class="line">            cmd.completion &#x3D; completion;</span><br><span class="line">            &#x2F;&#x2F;执行命令</span><br><span class="line">            [cmd execute];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 取消命令</span><br><span class="line">+ (void)cancelCommand:(Command *)cmd</span><br><span class="line">&#123;</span><br><span class="line">    if (cmd) &#123;</span><br><span class="line">        &#x2F;&#x2F; 从命令容器当中移除</span><br><span class="line">        [[[self sharedInstance] arrayCommands] removeObject:cmd];</span><br><span class="line">        &#x2F;&#x2F; 取消命令执行</span><br><span class="line">        [cmd cancel];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 判断当前命令是否正在执行</span><br><span class="line">+ (BOOL)_isExecutingCommand:(Command *)cmd</span><br><span class="line">&#123;</span><br><span class="line">    if (cmd) &#123;</span><br><span class="line">        NSArray *cmds &#x3D; [[self sharedInstance] arrayCommands];</span><br><span class="line">        for (Command *aCmd in cmds) &#123;</span><br><span class="line">            &#x2F;&#x2F; 当前命令正在执行</span><br><span class="line">            if (cmd &#x3D;&#x3D; aCmd) &#123;</span><br><span class="line">                return YES;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2018-06-26T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/%E5%BC%82%E6%AD%A5%E7%BB%98%E5%88%B6/">异步绘制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/20/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2018-06-20T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/20/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/01/desinImage/" class="archive-article-date">
-  	<time datetime="2018-02-28T16:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/01/desinImage/">设计图片缓存</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -303,128 +296,122 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/06/zjh/" class="archive-article-date">
-  	<time datetime="2017-12-05T16:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/06/zjh/">浅谈我经历的组件化之路</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">组件化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/" class="archive-article-date">
-  	<time datetime="2017-07-18T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/23/%E5%9F%8B%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          无侵入的埋点方案如何实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/20/flowchart/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo-flowchart</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/18/iOS%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E8%8D%89%E7%A8%BF/">iOS设计开发规范草稿</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/iOS/">&amp;laquo; Prev</a><a class="page-number" href="/tags/iOS/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
   
 
 
@@ -448,9 +435,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
