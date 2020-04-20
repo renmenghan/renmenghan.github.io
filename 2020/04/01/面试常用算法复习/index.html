@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>常用算法复习 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换">
+  <meta name="description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用算法复习">
 <meta property="og:url" content="http://yoursite.com/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
-<meta property="og:description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换">
+<meta property="og:description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-01T02:23:00.000Z">
-<meta property="article:modified_time" content="2020-04-20T08:53:26.911Z">
+<meta property="article:modified_time" content="2020-04-20T14:14:31.825Z">
 <meta property="article:author" content="edison">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="面试">
@@ -215,6 +215,8 @@ var _hmt = _hmt || [];
 </li>
 <li><a href="#jump8">动态规划</a><ol>
 <li><a href="#jump8.1">零钱兑换</a></li>
+<li><a href="#jump8.2">最大连续子序列和</a></li>
+<li><a href="#jump8.3">最长上升子序列LIS</a></li>
 </ol>
 </li>
 </ol>
@@ -257,8 +259,10 @@ var _hmt = _hmt || [];
 <h3 id="8-动态规划"><a href="#8-动态规划" class="headerlink" title="8. 动态规划"></a><span id="jump8">8. 动态规划</span></h3><h4 id="8-1-零钱兑换问题"><a href="#8-1-零钱兑换问题" class="headerlink" title="8.1 零钱兑换问题"></a><span id="jump8.1">8.1 零钱兑换问题</span></h4><p>设dp(n)是凑到n分钱需要的最少硬币个数<br>假如第一次选择了x分硬币 那么dp(n) = dp(n-x)+1;<br>假如第一次选择了y分硬币 那么dp(n) = dp(n-y)+1;<br>假如第一次选择了z分硬币 那么dp(n) = dp(n-z)+1;<br>所以dp(n) = min{dp(n-x),dp(n-y),dp(n-z)} + 1</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int coinChange(int[] coins, int amount) &#123;</span><br><span class="line">	if (amount &#x3D;&#x3D; 0) return 0 ;</span><br><span class="line">	if (amount &lt; 0 || coins.length &#x3D;&#x3D; 0 || coins &#x3D;&#x3D; null ) return -1;</span><br><span class="line">	int []dp &#x3D; new int[amount+1];</span><br><span class="line">	for (int i &#x3D; 1; i &lt;&#x3D; amount; i++) &#123;</span><br><span class="line">		int min &#x3D; Integer.MAX_VALUE;</span><br><span class="line">		for (int coin : coins) &#123;</span><br><span class="line">			if (i &lt; coin) &#123;continue;&#125;</span><br><span class="line">			if (dp[i - coin] &lt; 0 || dp[i - coin] &gt;&#x3D; min) &#123;continue;&#125;</span><br><span class="line">			min &#x3D; dp[i-coin];</span><br><span class="line">		&#125;</span><br><span class="line">		if (min &#x3D;&#x3D; Integer.MAX_VALUE) &#123;</span><br><span class="line">			dp[i] &#x3D; -1;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dp[i] &#x3D; min + 1;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	return dp[amount];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="8-2-最大连续子序列和"><a href="#8-2-最大连续子序列和" class="headerlink" title="8.2 最大连续子序列和"></a><span id="jump8.2">8.2 最大连续子序列和</span></h4><p>状态定义：<br>假设dp[i]是以num[i]结尾的最大连续子序列和<br>状态转移方程：<br>以上一个dp值dp[i-1]的正负来判断 如果是负数dp[i]就是num[i]自己 如果dp[i-1]为正数就是前面子序列和加上num[i] 即dp[i-1] + num[i]<br>总结<br>如果dp(i-1) &lt;= 0 ，那么dp(i) = nums[i];<br>如果dp(i-1) &gt; 0 ，那么dp(i) = nums[i] + dp[i-1];<br>初始状态：<br>dp(0) = nums[0];<br>最终的解：<br>dp(i)中的最大值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">int maxSubArray(int[] nums)&#123;</span><br><span class="line">	if(nums &#x3D;&#x3D; null || nums.length &#x3D;&#x3D; 0) return 0;</span><br><span class="line">	int[] dp &#x3D; new int[nums.lenth];</span><br><span class="line">	int max &#x3D; dp[0] &#x3D; nums[0];</span><br><span class="line">	for(int i &#x3D; 0 ; i &lt; dp.lenth; i++)&#123;</span><br><span class="line">		if(dp[i-1] &lt; 0)&#123;</span><br><span class="line">			dp[i] &#x3D; nums[i];</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			dp[i] &#x3D; nums[i] + dp[i-1];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		max &#x3D; Math.max(dp[i],max);</span><br><span class="line">	&#125;</span><br><span class="line">	return max;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 由于只跟前一项比  所以可以优化空间复杂度 不是用数组 </span><br><span class="line"> int maxSubArray2(int[] nums)&#123;</span><br><span class="line">	if (nums &#x3D;&#x3D; null || nums.length &#x3D;&#x3D; 0) &#123;return 0;&#125;</span><br><span class="line">	int dp &#x3D; nums[0];</span><br><span class="line">	int max &#x3D; dp;</span><br><span class="line">	for (int i &#x3D; 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">		if (dp &lt; 0) &#123;</span><br><span class="line">			dp &#x3D; nums[i];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dp &#x3D; dp+ nums[i];</span><br><span class="line">		&#125;</span><br><span class="line">		max &#x3D; Math.max(max, dp);</span><br><span class="line">	&#125;</span><br><span class="line">	return max ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<h4 id="8-3-最长上升子序列"><a href="#8-3-最长上升子序列" class="headerlink" title="8.3 最长上升子序列"></a><span id="jump8.3">8.3 最长上升子序列</span></h4>
       
 
       
