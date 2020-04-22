@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>常用算法复习 | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS 最长公共子序列LCS">
+  <meta name="description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS 最长公共子序列LCS 最长公共子串 背包问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用算法复习">
-<meta property="og:url" content="http://yoursite.com/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
-<meta property="og:description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS 最长公共子序列LCS">
+<meta property="og:description" content="目录 八大排序算法 冒泡 选择 堆 插入 归并 快排 希尔   两个有序数组合并 无序数组中位数 字符串翻转 翻转单链表 字符串逆序 回溯 n皇后问题   动态规划 零钱兑换 最大连续子序列和 最长上升子序列LIS 最长公共子序列LCS 最长公共子串 背包问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-01T02:23:00.000Z">
-<meta property="article:modified_time" content="2020-04-21T09:48:00.456Z">
+<meta property="article:modified_time" content="2020-04-22T08:04:10.886Z">
 <meta property="article:author" content="edison">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="面试">
@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-面试常用算法复习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-常用算法复习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -185,7 +185,7 @@ var _hmt = _hmt || [];
   
 
         
-        <a href="/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
+        <a href="/2020/04/01/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
   	<time datetime="2020-04-01T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
@@ -218,6 +218,8 @@ var _hmt = _hmt || [];
 <li><a href="#jump8.2">最大连续子序列和</a></li>
 <li><a href="#jump8.3">最长上升子序列LIS</a></li>
 <li><a href="#jump8.4">最长公共子序列LCS</a></li>
+<li><a href="#jump8.5">最长公共子串</a></li>
+<li><a href="#jump8.6">背包问题</a></li>
 </ol>
 </li>
 </ol>
@@ -293,6 +295,22 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int lcs(int[] nums1, int[] nums2)&#123;</span><br><span class="line">	if (nums1 &#x3D;&#x3D; null || nums1.length &#x3D;&#x3D; 0) return 0;</span><br><span class="line">	if (nums2 &#x3D;&#x3D; null || nums2.length &#x3D;&#x3D; 0) return 0;</span><br><span class="line">	</span><br><span class="line">	int[] rowsNums &#x3D; nums1 , colsNums &#x3D; nums2;</span><br><span class="line">	if(nums1.length &lt; nums2.length)&#123;</span><br><span class="line">		rowsNums &#x3D; nums2;</span><br><span class="line">		colsNums &#x3D; nums1;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int[] dp &#x3D; new int[colNums + 1];</span><br><span class="line">	</span><br><span class="line">	for(int i &#x3D; 1; i &lt;&#x3D;rowsNums.length;i++)&#123;</span><br><span class="line">		int cur &#x3D; 0;</span><br><span class="line">		for(int j &#x3D; 1 ; j &lt;&#x3D; colsNums.length;j++)&#123;</span><br><span class="line">			int leftTop &#x3D; cur;</span><br><span class="line">			cur &#x3D; dp[j];</span><br><span class="line">			if(rowsNums[i-1] &#x3D;&#x3D; colsNums[j-1])&#123;</span><br><span class="line">				dp[j] &#x3D; leftTop + 1;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				dp[j] &#x3D; Math.max(dp[j],dp[j-1]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return dp[colsNums.length];</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<h4 id="8-5-最长公共子串"><a href="#8-5-最长公共子串" class="headerlink" title="8.5 最长公共子串"></a><span id="jump8.5">8.5 最长公共子串</span></h4><p>思路：  i j 分别为str1 和 str2的第i位和第j位<br>如果str1的第i位和str2的第j位不相等 那么公共子串的长度就为0<br>如果相等那就是i-1 j-1 位长度加1</p>
+<p>状态定义：<br>设dp(i,j)是str1[i-1] str2[j-1]结尾的最长公共子串长度<br>状态转移方程：<br>如果str1[i-1] == str2[j-1] 那么 dp(i,j) = dp(i-1,j-1) + 1<br>如果str1[i-1] != str2[j-1] 那么 dp(i,j) = 0<br>状态初始值：dp(i,0) dp(0,j)均为0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int lcs (String str1, String str2)&#123;</span><br><span class="line">	if(str1 &#x3D;&#x3D; null || str2 &#x3D;&#x3D; null) return 0;</span><br><span class="line">	char[] chars1 &#x3D; str1.toCharArray();</span><br><span class="line">	char[] chars2 &#x3D; str2.toCharArray();</span><br><span class="line">	if (chars1.length &#x3D;&#x3D; 0 || chars2.length &#x3D;&#x3D; 0) return 0;</span><br><span class="line">	int[][] dp &#x3D; new int[chars1.length + 1][ chars2.length + 2];</span><br><span class="line">	int max &#x3D; 0;</span><br><span class="line">	for (int i &#x3D; 1; i &lt;&#x3D; chars1.length;i++)&#123;</span><br><span class="line">		for(int j &#x3D; 1 ; j &lt;&#x3D; chars2.length;j++)&#123;</span><br><span class="line">			if(chars1[i-1] !&#x3D; chars2[j-1]) continue;</span><br><span class="line">			dp[i][j] &#x3D; dp[i-1][j-1]</span><br><span class="line">			max &#x3D; Math.max(dp[i][j],max);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return max;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化空间复杂度 计算col列个 只需要 leftTop的值即（i-1,j-1）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int lcs (String str1, String str2)&#123;</span><br><span class="line">	if(str1 &#x3D;&#x3D; null || str2 &#x3D;&#x3D; null) return 0;</span><br><span class="line">	char[] chars1 &#x3D; str1.toCharArray();</span><br><span class="line">	char[] chars2 &#x3D; str2.toCharArray();</span><br><span class="line">	if (chars1.length &#x3D;&#x3D; 0 || chars2.length &#x3D;&#x3D; 0) return 0;</span><br><span class="line">	int[] rowsNums &#x3D; chars1 , colsNums &#x3D; chars2;</span><br><span class="line">	if(chars1.length &lt; chars2.length)&#123;</span><br><span class="line">		rowsNums &#x3D; chars2;</span><br><span class="line">		colsNums &#x3D; chars1;</span><br><span class="line">	&#125;</span><br><span class="line">	int max &#x3D; 0;</span><br><span class="line">	for(int row &#x3D; 1 ; row &lt;&#x3D; rowsNums.length ; row ++)&#123;</span><br><span class="line">		for(int col &#x3D;  colsNums.length ; col &gt;&#x3D; 1 ; col--) &#123;</span><br><span class="line">			if(rowsNums[i - 1] &#x3D;&#x3D; colsNums[j-1])&#123;</span><br><span class="line">				dp[col] &#x3D; dp[col - 1] + 1;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				dp[col] &#x3D; 0;	</span><br><span class="line">			&#125;</span><br><span class="line">			max &#x3D; Math.max(dp[col],max);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-6-背包问题"><a href="#8-6-背包问题" class="headerlink" title="8.6 背包问题"></a><span id="jump8.6">8.6 背包问题</span></h4><p>思路<br>以最后一个物品为例 如果物品重量超过了容量那么价值等于之前物品的价值也就是i-1 如果物品重量没有超过容量可以选择选与不选  如果选择价值就为前i-1个物品价值dp(i-1,j-weight[i-1])加上该物品价值values[i-1]<br>如果不选择价值为dp(i-1,j)</p>
+<p>状态定义：<br>dp(i,j)是最大承重为j、有前i件物品可选时的最大总价值 i∈[1,n] j∈[1,w]</p>
+<p>状态转移方程：<br>如果j &lt; weight[i-1] 那么dp(i,j) = dp(i-1 , j);<br>如果j &gt;= weight[i-1] 那么dp(i,j) = max{dp(i-1,j),dp(i-1,j-weight[i-1])+values[i-1]}</p>
+<p>状态初始值：<br>dp(i,0) dp(0,j)均为0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int select(int[] values , int[] weights , int capacity) &#123;</span><br><span class="line">		if (values &#x3D;&#x3D; null || weights&#x3D;&#x3D; null || capacity &lt;&#x3D; 0 || values.length &#x3D;&#x3D; 0 || weights.length &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return 0 ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int dp[][] &#x3D; new int[values.length + 1][capacity + 1]</span><br><span class="line">		</span><br><span class="line">		for(int i &#x3D; 1 ; i &lt;&#x3D; valus.length;i++)&#123;</span><br><span class="line">			for(int j &#x3D; 1 ; j &lt;&#x3D; capacity ; j ++ )&#123;</span><br><span class="line">				if(j &lt; weights[i-1]) &#123;</span><br><span class="line">					dp[i][j] &#x3D; dp[i-1][j];</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					dp[i][j] &#x3D; Math.max(dp[i-1][j],values[i-1] + dp[i-1][j-weights[i-1]]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return dp[values.length][capacity];</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化空间复杂度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int select(int[] values , int[] weights , int capacity) &#123;</span><br><span class="line">		if (values &#x3D;&#x3D; null || weights&#x3D;&#x3D; null || capacity &lt;&#x3D; 0 || values.length &#x3D;&#x3D; 0 || weights.length &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return 0 ;</span><br><span class="line">		&#125;</span><br><span class="line">		int[] dp &#x3D; new int[capacity + 1];</span><br><span class="line">		for (int i &#x3D; 1; i &lt;&#x3D; valuse.length ; i ++ ) &#123;</span><br><span class="line">			for (int j &#x3D; capacity ; j &gt;&#x3D; weights[i-1] ; j++)&#123;</span><br><span class="line">				dp[j] &#x3D; Math.max(dp[j],dp[j-weights[i-1]] + values[i-1]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return dp[capacaty];</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -391,7 +409,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/%E9%9D%A2%E8%AF%95%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
