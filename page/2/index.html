@@ -168,6 +168,108 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-runtime-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/runtime-2/">Runtime(二)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/runtime-2/" class="archive-article-date">
+  	<time datetime="2018-07-23T16:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h1><h2 id="runtime-Class-方法"><a href="#runtime-Class-方法" class="headerlink" title="runtime Class-方法"></a>runtime Class-方法</h2><h3 id="Class的结构"><a href="#Class的结构" class="headerlink" title="Class的结构"></a>Class的结构</h3><p><img src="/photos/runtime/runtime-class.png" alt=""></p>
+<ul>
+<li>通过上一章节看到bits就可以知道用它来进行&amp;运算 从内存地址抠出来一段可以获得更多信息<h4 id="bit-amp-FAST-DATA-MAS得到一个可读可写的struct"><a href="#bit-amp-FAST-DATA-MAS得到一个可读可写的struct" class="headerlink" title="bit &amp; FAST_DATA_MAS得到一个可读可写的struct"></a>bit &amp; FAST_DATA_MAS得到一个可读可写的struct</h4><ul>
+<li>这里包含了</li>
+<li>这里包含方法列表 属性列表 协议列表<ul>
+<li>这些列表是二维数组 method_arrat_t 存着 method_list_t 存着method_t 我们平时所调用的函数就会被包装成一个method_t对象</li>
+<li>程序会把ro里的方法放到这里 然后Category的方法也会放在这里并且在数组前面</li>
+</ul>
+</li>
+<li>这个rw里存放着一个ro也就是只读的struct<ul>
+<li>class_ro_t里的方法是一维数组 直接存的方法 系统一开始</li>
+<li>还存放着变量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>method 上面提了就是对方法函数的封装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct method_t &#123;</span><br><span class="line">SEL name; &#x2F;&#x2F; 函数名</span><br><span class="line">const char *types; &#x2F;&#x2F; 参数类型返回值的编码</span><br><span class="line">IMP imp  &#x2F;&#x2F; 指向函数的指针 （函数地址）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/07/24/runtime-2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">底层</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/24/runtime-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-runtime-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -935,6 +1037,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hybird</a>
               </li>
             
             <div class="clearfix"></div>
