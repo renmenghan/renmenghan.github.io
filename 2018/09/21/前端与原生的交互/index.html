@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/5 | Edison‘s Blog</title>
+  <title>前端与原生的交互(草稿 补了demo) | Edison‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Edison‘s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/05/index.html">
+  <meta name="description" content="总结复习一下混合开发的内容 在iOS开发中，h5和原生实现通信的方式有多种如URL SCHEME的拦截，jscore ，jsbrdige 通过 -stringByEvaluatingJavaScriptFromString: 来执行js代码和通过拦截url来进行处理这种弊端在于代码过于松散，长久的话会使webView:shouldStartLoadWithRequest:navigationTyp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端与原生的交互(草稿 补了demo)">
+<meta property="og:url" content="http://yoursite.com/2018/09/21/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%8E%9F%E7%94%9F%E7%9A%84%E4%BA%A4%E4%BA%92/index.html">
 <meta property="og:site_name" content="Edison‘s Blog">
+<meta property="og:description" content="总结复习一下混合开发的内容 在iOS开发中，h5和原生实现通信的方式有多种如URL SCHEME的拦截，jscore ，jsbrdige 通过 -stringByEvaluatingJavaScriptFromString: 来执行js代码和通过拦截url来进行处理这种弊端在于代码过于松散，长久的话会使webView:shouldStartLoadWithRequest:navigationTyp">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/photos/interview/jscore.png">
+<meta property="og:image" content="http://yoursite.com/photos/interview/jscore1.png">
+<meta property="article:published_time" content="2018-09-21T13:19:00.000Z">
+<meta property="article:modified_time" content="2020-05-06T07:03:08.393Z">
 <meta property="article:author" content="edison">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Hybird">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/photos/interview/jscore.png">
   
     <link rel="alternative" href="/atom.xml" title="Edison‘s Blog" type="application/atom+xml">
   
@@ -166,36 +176,92 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端与原生的交互" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%8E%9F%E7%94%9F%E7%9A%84%E4%BA%A4%E4%BA%92/" class="archive-article-date">
-  	<time datetime="2020-05-05T13:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%8E%9F%E7%94%9F%E7%9A%84%E4%BA%A4%E4%BA%92/">前端与原生的交互(草稿)</a>
+    <h1 class="article-title" itemprop="name">
+      前端与原生的交互(草稿 补了demo)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/21/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%8E%9F%E7%94%9F%E7%9A%84%E4%BA%A4%E4%BA%92/" class="archive-article-date">
+  	<time datetime="2018-09-21T13:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>总结复习一下混合开发的内容</p>
+<p>在iOS开发中，h5和原生实现通信的方式有多种如URL SCHEME的拦截，jscore ，jsbrdige</p>
+<p>通过 -stringByEvaluatingJavaScriptFromString: 来执行js代码和通过拦截url来进行处理这种弊端在于代码过于松散，长久的话会使webView:shouldStartLoadWithRequest:navigationType:方法变得越来月臃肿<br>所以我们可以选择更优雅的方式来进行开发如使用jscore、WebViewJavascriptBridge</p>
+<h3 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a><a href="https://github.com/renmenghan/WebViewDemo" target="_blank" rel="noopener">demo地址</a></h3><h2 id="JavaScriptCore"><a href="#JavaScriptCore" class="headerlink" title="JavaScriptCore"></a>JavaScriptCore</h2><a id="more"></a>
+<p>jscore为原生语言提供了动态能力，同时也为js提供了原生能力来弥补前端所缺能力。</p>
+<p>由于有了JavaScriptCore这种桥梁，所以出现了很多使用jscore的框架如rn weex 小程序等    </p>
+<h3 id="JavaScriptCore-框架"><a href="#JavaScriptCore-框架" class="headerlink" title="JavaScriptCore 框架"></a>JavaScriptCore 框架</h3><p>JavaScriptCore 框架主要由 JSVirtualMachine 、JSContext、JSValue 类组成。<br>JSVirtualMachine 是为JS代码的运行提供一个虚拟机环境，在同一时间内JSVirtualMachine只能执行一个线程。如果想要多个线程执行需要创建多个JSVirtualMachine 每个JSVirtualMachine都有自己的gc多个JSVirtualMachine之间的对象无法传递</p>
+<p>JSContext是JavaScript运行环境的上下文，负责原生和JavaScript的数据传递</p>
+<p>JSValue是JavaScript的值对象用来记录JavaScript的原始值并提供进行原生值对象转换的接口方法。</p>
+<p>JSVirtualMachine 里包含了多个 JSContext， 同一个 JSContext 中又可以有多个 JSValue。</p>
+<p><img src="/photos/interview/jscore.png" alt=""></p>
+<h3 id="解释执行-JavaScript-代码的-JavaScriptCore-和原生应用是怎么交互的呢？"><a href="#解释执行-JavaScript-代码的-JavaScriptCore-和原生应用是怎么交互的呢？" class="headerlink" title="解释执行 JavaScript 代码的 JavaScriptCore 和原生应用是怎么交互的呢？"></a>解释执行 JavaScript 代码的 JavaScriptCore 和原生应用是怎么交互的呢？</h3><p>每个 JavaScriptCore 中的 JSVirtualMachine 对应着一个原生线程，同一个 JSVirtualMachine 中可以使用 JSValue 与原生线程通信，遵循的是 JSExport 协议：原生线程可以将类方法和属性提供给 JavaScriptCore 使用，JavaScriptCore 可以将 JSValue 提供给原生线程使用。</p>
+<p>JavaScriptCore 和原生应用要想交互，首先要有 JSContext。JSContext 直接使用 init 初始化，会默认使用系统创建的 JSVirtualMachine。</p>
+<p><img src="/photos/interview/jscore1.png" alt=""></p>
+<p>原生代码调用JavaScript</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JSContext *context &#x3D; [self.webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];</span><br><span class="line">&#x2F;&#x2F;! JSContext -evaluateScript:方式调用JS方法</span><br><span class="line">&#x2F;&#x2F; [context evaluateScript:[NSString stringWithFormat:@&quot;ocToJs(&#39;shareSucceed&#39;, &#39;shareContent&#39;)&quot;]];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;! JSValue -callWithArguments:方式调用JS方法</span><br><span class="line">[context[@&quot;ocToJs&quot;] callWithArguments:@[@&quot;shareSucceed&quot;, @&quot;shareContent&quot;]];</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript 又是如何调用原生代码呢<br>block方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function loadURL(url) &#123;</span><br><span class="line">    window.location.href &#x3D; url;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; JS调用OC</span><br><span class="line">function jsToOc(action, params) &#123;</span><br><span class="line">    var url &#x3D; &quot;jsToOc:&#x2F;&#x2F;&quot; + action + &quot;?&quot; + params;</span><br><span class="line">    loadURL(url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">context[@&quot;jsToOc&quot;] &#x3D; ^(NSString *action, NSString *params)&#123;</span><br><span class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        [self showAlertViewWithTitle:action message:params];</span><br><span class="line">    &#125;);</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以通过实现JSExport协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">            </span><br><span class="line">&#x2F;&#x2F; JS调用OC的功能</span><br><span class="line">function clickSucceed(param) &#123;</span><br><span class="line">    var action &#x3D; &quot;click&quot;;</span><br><span class="line">    RMHApp.jsToOc(action, param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">定义协议</span><br><span class="line"></span><br><span class="line">@protocol JSObjcDelegate &lt;JSExport&gt;</span><br><span class="line"></span><br><span class="line">JSExportAs(jsToOc, - (void)jsToOc:(NSString *)action params:(NSString *)param);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">#pragma mark - UIWebViewDelegate</span><br><span class="line">- (void)webViewDidFinishLoad:(UIWebView *)webView &#123;</span><br><span class="line">    </span><br><span class="line">    JSContext *context &#x3D; [webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];</span><br><span class="line">    self.title &#x3D; [context evaluateScript:@&quot;document.title&quot;].toString;</span><br><span class="line">    </span><br><span class="line">    context[@&quot;RMHApp&quot;] &#x3D; self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)jsToOc:(NSString *)action params:(NSString *)param</span><br><span class="line">&#123;</span><br><span class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">       [self showAlertViewWithTitle:action message:param];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>原生和JavaScript的互通依赖于虚拟机环境JSVirtualMachine<br>JSVirtualMachine 是一个抽象的 JavaScript 虚拟机<br>而其核心的 JavaScriptCore 引擎则是一个真实的虚拟机<br>包含了虚拟机都有的解释器和运行时部分。其中，解释器主要用来将高级的脚本语言编译成字节码，运行时主要用来管理运行时的内存空间。</p>
+<h2 id="WebViewJavascriptBridge"><a href="#WebViewJavascriptBridge" class="headerlink" title="WebViewJavascriptBridge"></a>WebViewJavascriptBridge</h2><p>OC初始化<br>在OC中需要注册handler来供js调用<br>OC通过调用loadRequest加载网页url一加载就会执行web中的bridge初始化代码setupWebViewJavascriptBridge（bridge）函数<br>原生 WebViewJavascriptBridge 类中代理方法会拦截 https://<strong>bridge_loaded</strong> 的加载，在 web view 中执行本地 WebViewJavascriptBridge_JS.m 文件中的代码，初始化 window.WebViewJavascriptBridge对象</p>
+<p>js调用oc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">js注册</span><br><span class="line"> bridge.callHandler(tempHandlerName, data, callback);</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; JS调用OC的功能</span><br><span class="line">function clickSucceed() &#123;</span><br><span class="line">var params &#x3D; &#123;&#39;title&#39;:&#39;1111测试分享的标题&#39;,&#39;content&#39;:&#39;测试分享的内容&#39;,&#39;url&#39;:&#39;http:&#x2F;&#x2F;www.baidu.com&#39;, &#39;user&#39;:&#123;&#39;name&#39;:&#39;Jack&#39;, &#39;age&#39;:&#39;23&#39;&#125;&#125;;</span><br><span class="line">RMHApp.jsToOc(params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oc 注册handler</span><br><span class="line"> [bridge registerHandler:@&quot;jsToOc&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line">       </span><br><span class="line">    [self performSelector:NSSelectorFromString(ObjCMethodName) </span><br><span class="line">    </span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">- (void)jsToOc:(NSDictionary *)args</span><br><span class="line">&#123;</span><br><span class="line">    NSString *shareContent &#x3D; [NSString stringWithFormat:@&quot;标题：%@\n 内容：%@ \n url：%@&quot;,</span><br><span class="line">                                 args[@&quot;title&quot;],</span><br><span class="line">                                 args[@&quot;content&quot;],</span><br><span class="line">                                 args[@&quot;url&quot;]];</span><br><span class="line">    [self.controller showAlertViewWithTitle:@&quot;点击按钮调用原生方法&quot; message:shareContent];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>oc调用js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 给oc 调用</span><br><span class="line">bridge.registerHandler(&quot;ocToJs&quot;, function(data, responseCallback) &#123;</span><br><span class="line">	var params &#x3D; &#123;&#39;title&#39;:&#39;测试分享的回调&#39;,&#39;content&#39;:data[&#39;content&#39;],&#39;url&#39;:&#39;http:&#x2F;&#x2F;www.baidu.com&#39;&#125;;</span><br><span class="line">	responseCallback(params);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (void)share:(id)sender &#123;</span><br><span class="line">    [self.bridge callHandler:@&quot;ocToJs&quot; data:@&#123;@&quot;content&quot;:@&quot;1111&quot;&#125; responseCallback:^(id responseData) &#123;</span><br><span class="line">        NSString *shareContent &#x3D; [NSString stringWithFormat:@&quot;标题：%@\n 内容：%@ \n url：%@&quot;,</span><br><span class="line">                                         responseData[@&quot;title&quot;],</span><br><span class="line">                                         responseData[@&quot;content&quot;],</span><br><span class="line">                                         responseData[@&quot;url&quot;]];</span><br><span class="line">        [self showAlertViewWithTitle:@&quot;oc调用js之后回调&quot; message:shareContent];</span><br><span class="line">    &#125;];</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -215,19 +281,115 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/21/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%8E%9F%E7%94%9F%E7%9A%84%E4%BA%A4%E4%BA%92/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/05/01/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常用算法复习
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/20/flowchart/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo-flowchart</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -250,8 +412,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
