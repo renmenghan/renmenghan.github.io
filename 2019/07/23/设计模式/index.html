@@ -16,7 +16,7 @@
 <meta property="og:description" content="六大设计原则 开闭原则 （对修改关闭，对扩展开放） 单一原则   （一个类只做一件事情如iOS中UIView与CALayer之间关系） 接口隔离原则 （每个接口做专门的事情不会根据入参来实现多种任务，使用多个专门协议，而不是一个庞大臃肿的协议如iOS的tableview协议 ） 依赖倒置原则 （抽象不应该依赖于具体，具体实现可以依赖于抽象） 里式替换原则 （父类可以被子类替换，且原有功能不变如KV">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-07-23T15:28:00.000Z">
-<meta property="article:modified_time" content="2020-04-17T05:51:06.465Z">
+<meta property="article:modified_time" content="2020-06-28T05:04:06.995Z">
 <meta property="article:author" content="edison">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="面试">
@@ -199,7 +199,13 @@ var _hmt = _hmt || [];
 <li>单一原则   （一个类只做一件事情如iOS中UIView与CALayer之间关系）</li>
 <li>接口隔离原则 （每个接口做专门的事情不会根据入参来实现多种任务，使用多个专门协议，而不是一个庞大臃肿的协议如iOS的tableview协议 ）</li>
 <li>依赖倒置原则 （抽象不应该依赖于具体，具体实现可以依赖于抽象）</li>
-<li>里式替换原则 （父类可以被子类替换，且原有功能不变如KVO）</li>
+<li>里式替换原则 （父类可以被子类替换，且原有功能不变如KVO）<ul>
+<li>作用 里式替换原则是实现开闭原则的重要方式之一</li>
+<li>克服了继承中重写父类方法造成的可复用性变差的缺点</li>
+<li>它是动作正确性的保证 即类的扩展不会给已有的系统引入新的错误，降低了代码出错的可能性</li>
+<li>例子 几维鸟不是鸟   燕子可以飞 几维鸟不能飞 </li>
+</ul>
+</li>
 <li>迪米特法则 （一个对象应当对其他对象尽可能的少了解，高内聚低耦合）</li>
 </ol>
 <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ol>
